@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Frontend Developer Intern",
+    "company": "Health Pulse Connect",
+    "duration": "May 2024 - June 2024",
+    "bullets": [
+      "Developed and maintained a health sector startup, implementing real-time chat and video call features with WebSockets.",
+      "Used Redux for state management and API integration, improving application performance.",
+      "Enhanced the web app's UI for a better user experience."
+    ],
+    "align": "left"
+  },
+  {
+    "title": "Software Engineer Intern",
+    "company": "Tech Innovations Inc.",
+    "duration": "June 2023 - August 2023",
+    "bullets": [
+      "Collaborated with the backend team to integrate APIs into the frontend using React.",
+      "Improved the scalability of the product by optimizing React component rendering.",
+      "Implemented automated unit tests using Jest to ensure the robustness of the application."
+    ],
+    "align": "right"
+  },
+  {
+    "title": "UI/UX Designer Intern",
+    "company": "Creative Solutions Ltd.",
+    "duration": "January 2023 - April 2023",
+    "bullets": [
+      "Designed user-friendly interfaces for mobile and web applications using Figma.",
+      "Collaborated with the development team to ensure smooth handoff and implementation of designs.",
+      "Conducted user research and usability testing to improve the overall user experience."
+    ],
+    "align": "left"
+  }
+]
