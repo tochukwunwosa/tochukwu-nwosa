@@ -44,14 +44,14 @@ export default function HeroSection() {
             Tochukwu Nwosa
           </motion.h1>
           <motion.span
-            className='dark:text-foreground/70 text-xl sm:text-2xl tracking-[0.015em] pl-4'
+            className='dark:text-foreground/70 text-center lg:text-left text-xl sm:text-2xl tracking-[0.015em] pl-4'
             variants={fadeUp}
             custom={2}
           >
             Full-stack Developer
           </motion.span>
           <motion.p
-            className="dark:text-foreground/70 text-base sm:text-lg max-w-2xl sm:mx-0 pl-4"
+            className="dark:text-foreground/70 text-center lg:text-left text-base sm:text-lg max-w-2xl sm:mx-0 pl-4"
             variants={fadeUp}
             custom={3}
           >
