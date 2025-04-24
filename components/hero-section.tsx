@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 import { GithubIcon } from './ui/icons/github'
 import { LinkedinIcon } from './ui/icons/linkedin'
+import AboutMeCard from './ui/about-me-card'
 import ResumeDownload from './resume-downlaod'
-import AboutMeCard from './about-me-card'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -17,7 +17,7 @@ const fadeUp = {
 
 export default function HeroSection() {
   return (
-    <motion.div
+    <motion.section
       initial="hidden"
       animate="visible"
       id='about'
@@ -89,18 +89,18 @@ export default function HeroSection() {
         <motion.div
           className='lg:flex-1 lg:ml-10'
         >
-          <motion.div 
-          variants={fadeUp}
-          custom={5}>
+          <motion.div
+            variants={fadeUp}
+            custom={5}>
             <AboutMeCard />
           </motion.div>
-          <motion.div 
-          variants={fadeUp}
-          custom={6}>
+          <motion.div
+            variants={fadeUp}
+            custom={6}>
             <ResumeDownload />
           </motion.div>
         </motion.div>
       </div>
-    </motion.div>
+    </motion.section>
   )
 }

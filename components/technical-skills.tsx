@@ -3,39 +3,42 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import GridBG from './ui/grid-bg'
-import Image from 'next/image';
-import GithubIcon from '@/public/github_dark.svg';
-import TypeScriptIcon from '@/public/typescript.svg';
-import JavaScriptIcon from '@/public/javascript.svg';
-import ReactIcon from '@/public/react_dark.svg';
-import NextJsIcon from '@/public/nextjs_icon_dark.svg';
-import TailwindCSSIcon from '@/public/tailwindcss.svg';
-import NodejsIcon from '@/public/nodejs.svg';
-import ExpressjsIcon from '@/public/expressjs_dark.svg';
-import MongoDBIcon from '@/public/mongodb.svg';
-import PostgressQLIcon from '@/public/postgresql.svg';
-import GraphQLIcon from '@/public/graphql.svg';
+import {
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaGithub
+} from 'react-icons/fa';
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiGraphql
+} from 'react-icons/si';
 
-import { ElementType } from 'react';
+import { IconType } from 'react-icons';
 
-interface TechnicalSkills {
+interface TechnicalSkill {
   name: string;
-  icon?: ElementType;
+  icon: IconType;
 }
 
-const TECHNICAL_SKILLS: TechnicalSkills[] = [
-  { name: 'React', icon: ReactIcon },
-  { name: 'Next.js', icon: NextJsIcon },
-  { name: 'TypeScript', icon: TypeScriptIcon },
-  { name: 'JavaScript', icon: JavaScriptIcon },
-  { name: 'Tailwind CSS', icon: TailwindCSSIcon },
-  { name: 'Node.js', icon: NodejsIcon },
-  { name: 'Express.js', icon: ExpressjsIcon },
-  { name: 'MongoDB', icon: MongoDBIcon },
-  { name: 'PostgreSQL', icon: PostgressQLIcon },
-  { name: 'GraphQL', icon: GraphQLIcon },
-  { name: 'GitHub', icon: GithubIcon },
-]
+const TECHNICAL_SKILLS: TechnicalSkill[] = [
+  { name: 'React', icon: FaReact },
+  { name: 'Next.js', icon: SiNextdotjs },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'JavaScript', icon: FaJs },
+  { name: 'Tailwind CSS', icon: SiTailwindcss },
+  { name: 'Node.js', icon: FaNodeJs },
+  { name: 'Express.js', icon: SiExpress },
+  { name: 'MongoDB', icon: SiMongodb },
+  { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'GraphQL', icon: SiGraphql },
+  { name: 'GitHub', icon: FaGithub },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,7 +47,8 @@ const fadeUp = {
     y: 0,
     transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
   }),
-}
+};
+
 export default function TechnicalSkills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -56,7 +60,7 @@ export default function TechnicalSkills() {
       animate={isInView ? "visible" : "hidden"}
       id="skill"
       aria-label="Tochukwu Nwosa's technical skills"
-      className="relative py-24 bg-transparent"
+      className="snap-start relative py-24 bg-transparent"
     >
       {/* bg */}
       <GridBG />
@@ -84,21 +88,21 @@ export default function TechnicalSkills() {
           custom={3}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
           {TECHNICAL_SKILLS.map((skill, idx) => {
-            const Icon = skill.icon
+            const Icon = skill.icon;
             return (
-            <motion.div
-              variants={fadeUp}
-              custom={idx + 1}
-              key={idx}
-              tabIndex={0}
-              aria-label={skill.name}
-              className={`disabled flex items-center space-x-2 w-[200px] group bg-background/50 dark:bg-background/80 backdrop-blur-sm border border-foreground/30 rounded-full p-3 shadow-sm hover:border-foreground/40 transition-all duration-300 hover:bg-background/80 hover:scale-105 hover:shadow-md`}
-            >
+              <motion.div
+                variants={fadeUp}
+                custom={idx + 1}
+                key={idx}
+                tabIndex={0}
+                aria-label={skill.name}
+                className="flex items-center justify-between w-full group bg-background/50 dark:bg-background/80 backdrop-blur-sm border border-foreground/30 rounded-full p-3 shadow-sm hover:border-foreground/40 transition-all duration-300 hover:bg-background/80 hover:scale-105 hover:shadow-md"
+              >
                 <h3 className="text-base md:text-lg px-2">{skill.name}</h3>
-                {Icon && <Icon aria-hidden="true" className="size-6 text-foreground" />}           
-            </motion.div>
-          )})}
-
+                <Icon aria-hidden="true" className="size-6 text-foreground" />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </motion.section>

@@ -4,13 +4,11 @@ import React, { useRef, useState } from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { MailCheckIcon, MailCheckIconHandle } from "./ui/icons/mail";
-import { MapPinIcon, MapPinIconHandle } from "./ui/icons/map-pin";
+import { MailCheckIcon, MailCheckIconHandle } from "./icons/mail";
+import { MapPinIcon, MapPinIconHandle } from "./icons/map-pin";
 
 export default function AboutMeCard() {
   const MailCheckIconRef = useRef<MailCheckIconHandle>(null);
@@ -20,8 +18,8 @@ export default function AboutMeCard() {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`border rounded-xl transition-all duration-300 ease-in-out ${isHovered ? "border-2 border-foreground/30 " : "border-background scale-100"
-        }  dark:shadow-foreground/15 bg-background dark:shadow-lg `}
+      className={`border rounded-xl transition-all duration-300 ease-in-out ${isHovered ? "border-2 border-foreground/20 " : "border-background scale-100"
+        }  dark:shadow-foreground/10 bg-background dark:shadow-md `}
     >
       <Card className="border-0">
         <CardHeader>
@@ -62,19 +60,13 @@ export default function AboutMeCard() {
               <span className="group-hover:underline">Lagos, Nigeria.</span>
             </div>
           </div>
-          <p className="lg:pr-12 ">
-            Hey there! I'm a
-            <span className="font-semibold"> full-stack developer</span> who
-            pours
-            <span className="font-semibold"> heart</span> into every
-            <span className="font-semibold"> line of code</span>, turning
-            <span className="font-semibold"> ideas</span> into
-            <span className="font-semibold"> web experiences</span> that feel
-            <span className="font-semibold"> alive</span> and
-            <span className="font-semibold"> connect</span> with people. Let’s
-            <span className="font-semibold"> build</span> something
-            <span className="font-semibold"> meaningful</span> together!
+          <p className="">
+            I translate <span className="font-medium">Figma</span> and <span className="font-medium">PSD designs</span> into clean, scalable <span className="font-medium">Next.js</span> and <span className="font-medium">React</span> code; transforming concepts into <span className="font-medium">beautiful, responsive web pages</span> that drive <span className="font-medium">traffic</span> and boost <span className="font-medium">revenue</span>.
+            <br/>
+            <br/> 
+            Let’s build something that brings your <span className="font-medium">vision to life</span> and helps your <span className="font-medium">business grow</span>.
           </p>
+
         </CardContent>
       </Card>
     </div>

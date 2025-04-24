@@ -3,8 +3,8 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import GridBG from './ui/grid-bg'
-import ProjectCard from './ui/project-card'
-import ProjectsData from '../constants/ProjectsData.json'
+import { projectsData } from '../constants/projectsData'
+import ProjectCard from './ui/project-card';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -25,7 +25,7 @@ export default function Projects() {
       animate={isInView ? "visible" : "hidden"}
       id="project"
       aria-label="Tochukwu Nwosa's projects"
-      className="relative py-24 bg-transparent "
+      className="snap-start relative py-24 bg-transparent "
     >
       <GridBG />
 
@@ -43,7 +43,7 @@ export default function Projects() {
         <motion.div
           variants={fadeUp}
           custom={3} className='space-y-20'>
-          {ProjectsData.map((project) => (
+          {projectsData.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>

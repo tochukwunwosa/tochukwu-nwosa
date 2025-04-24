@@ -25,6 +25,8 @@ const slideLeft = {
 export default function ProjectCard({ project }: { project: Project }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  
+  if (!project) return null;
 
   return (
     <motion.div 

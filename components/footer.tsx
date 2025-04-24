@@ -110,7 +110,7 @@ export default function Footer() {
                 variants={itemVariants}
                 className="text-foreground/60 max-w-md"
               >
-                I build exceptional and accessible digital experiences for the web.
+                Turning complex challenges into elegant, user-centered solutions that make an impact.
               </motion.p>
             </motion.div>
 

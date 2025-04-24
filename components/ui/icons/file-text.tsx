@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
   useRef,
 } from 'react';
-import { motion, useAnimation } from 'motion/react';
+import { motion, useAnimation } from 'framer-motion';
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 

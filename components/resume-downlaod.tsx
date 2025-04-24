@@ -15,6 +15,21 @@ export default function ResumeDownload() {
       initial="rest"
       animate={isHovered ? 'hover' : 'rest'}
     >
+      {/* Ping effect */}
+      <motion.div
+        className="absolute inset-0 rounded-md bg-foreground/50 opacity-10 z-0"
+        style={{ scale: 0.5 }}
+        animate={{
+          scale: [1, 1.3],
+          opacity: [0.2, 0],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
       {/* Border behind on hover */}
       <motion.div
         variants={{
@@ -22,7 +37,7 @@ export default function ResumeDownload() {
           hover: { opacity: 1, y: 2 },
         }}
         transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        className="absolute inset-0 border-2 border-foreground bg-background rounded-md pointer-events-none"
+        className="absolute inset-0 border-2 border-foreground bg-background rounded-md pointer-events-none z-0"
       />
 
       {/* Main CTA */}
@@ -34,13 +49,9 @@ export default function ResumeDownload() {
           hover: { y: -4, x: 4 },
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-        className="relative  lg:mx-0 bg-foreground text-background py-2 px-8 flex items-center justify-center gap-2 rounded-md z-10 font-medium"
+        className="relative z-10 bg-foreground text-background py-2 px-8 flex items-center justify-center gap-2 rounded-md font-medium"
       >
-        <span
-        >
-          Download Resume
-        </span>
-
+        <span>Download Resume</span>
         <FileTextIcon size={20} />
       </motion.a>
     </motion.div>

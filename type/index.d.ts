@@ -8,3 +8,11 @@ declare interface Project {
   githubLink?: string;
   liveDemoLink: string;
 }
+
+declare interface Experience {
+  title: string;
+  company: string;
+  duration: string;
+  align: "left" | "right";
+  bullets: string[];
+}
