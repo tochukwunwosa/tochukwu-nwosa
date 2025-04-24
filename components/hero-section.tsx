@@ -91,7 +91,9 @@ export default function HeroSection() {
         >
           <motion.div
             variants={fadeUp}
-            custom={5}>
+            custom={5}
+            className='w-full'
+          >
             <AboutMeCard />
           </motion.div>
           <motion.div
