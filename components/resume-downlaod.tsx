@@ -17,11 +17,11 @@ export default function ResumeDownload() {
     >
       {/* Ping effect */}
       <motion.div
-        className="absolute inset-0 rounded-md bg-foreground opacity-10 z-0"
-        style={{ scale: 0.5 }}
+        className="absolute inset-0 rounded-md bg-foreground opacity-20 z-0"
+        style={{ scale: 1 }}
         animate={{
-          scale: [1, 1.3],
-          opacity: [0.2, 0],
+          scale: [1, 1.4],
+          opacity: [0.3, 0],
         }}
         transition={{
           duration: 1.5,
