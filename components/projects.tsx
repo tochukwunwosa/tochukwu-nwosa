@@ -38,7 +38,10 @@ export default function Projects() {
         <motion.h2
           variants={fadeUp}
           custom={1}
-          className="text-4xl md:text-5xl font-title font-semibold mb-12 text-center">Featured Projects</motion.h2>
+          className="text-4xl md:text-5xl font-title font-semibold mb-12 text-center"
+        >
+          Featured Projects
+        </motion.h2>
         {/* projects card */}
         <motion.div
           variants={fadeUp}

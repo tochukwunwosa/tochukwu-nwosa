@@ -22,7 +22,7 @@ export default function HeroSection() {
       animate="visible"
       id='about'
       aria-label='About Tochukwu Nwosa.'
-      className="px-7 pb-5 pt-40 lg:px-14 relative overflow-hidden"
+      className=" pb-5 pt-40 lg:px-14 relative overflow-hidden"
     >
 
       {/* White Overlay */}
