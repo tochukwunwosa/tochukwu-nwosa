@@ -37,7 +37,7 @@ export default function HeroSection() {
           custom={1}
         >
           <motion.h1
-            className="hero-title text-center lg:text-left text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
+            className="hero-title text-center lg:text-left text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
             variants={fadeUp}
             custom={1}
           >
