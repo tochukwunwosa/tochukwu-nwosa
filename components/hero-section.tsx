@@ -23,14 +23,14 @@ export default function HeroSection() {
       animate="visible"
       id='about'
       aria-label='About Tochukwu Nwosa.'
-      className=" pb-5 pt-40 lg:px-14 relative overflow-hidden"
+      className=" pb-5 pt-40 lg:px-14 overflow-hidden"
     >
 
       {/* bg Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b !from-foreground/90 !to-foreground/97 dark:!from-background/90  dark:!to-background/97" />
 
       {/* Hero Content */}
-      <main className="relative z-[10] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
+      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
         {/* name and links */}
         <motion.div
           className="relative flex flex-col items-center lg:items-start space-y-5"
