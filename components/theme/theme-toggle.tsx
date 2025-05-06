@@ -26,7 +26,7 @@ export default function ModeToggle() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
           className="relative size-12 cursor-pointer rounded-full bg-transparent bg-foreground text-background dark:bg-background dark:text-foreground shadow-lg dark:shadow-sm shadow-foreground grid place-items-center focus:outline-none"
           aria-label="Toggle theme"
@@ -62,8 +62,8 @@ export default function ModeToggle() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        align="end"
-        className="animate-in fade-in slide-in-from-top-4 bg-foreground"
+        align="center"
+        className="mt-2 animate-in fade-in slide-in-from-top-2 bg-foreground"
       >
         <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer text-background">
           Light

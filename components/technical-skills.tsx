@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import GridBG from './ui/grid-bg'
 import {
   FaReact,
   FaNodeJs,
@@ -60,13 +59,10 @@ export default function TechnicalSkills() {
       animate={isInView ? "visible" : "hidden"}
       id="skill"
       aria-label="Tochukwu Nwosa's technical skills"
-      className="snap-start py-24 bg-transparent"
+      className="snap-start relative py-24 bg-transparent"
     >
-      {/* bg */}
-      <GridBG />
-
       {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
+      <div className='bg-overlay'/>
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}

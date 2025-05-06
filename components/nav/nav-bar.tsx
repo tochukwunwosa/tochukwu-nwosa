@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ModeToggle from '../theme/theme-toggle'
@@ -17,28 +17,19 @@ const NavItems: NavItem[] = [
 
 export default function NavBar() {
   const [openMenu, setOpenMenu] = useState(false)
-  const [isSticky, setIsSticky] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 150)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  
 
   return (
-    <>
+    <div className={` w-screen sticky top-0 z-50 transition-colors duration-300 `}>
+       {/* bg white overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-        className={`sticky top-0 z-50 w-screen flex items-center justify-between px-5 py-5 transition-colors duration-300 ${isSticky
-          ? 'bg-foreground/95 backdrop-blur-md shadow-md'
-          : 'bg-gradient-to-b !from-foreground/90 !to-foreground/97 dark:!from-background/90  dark:!to-background/97 backdrop-blur-none shadow-none'
-          }`}
+        className='relative w-full max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center justify-between' 
       >
+        
         {/* Theme toggle */}
         <motion.div
           whileHover={{ scale: 1.1 }}
@@ -54,7 +45,7 @@ export default function NavBar() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           whileHover={{ scale: 1.05 }}
-          className={`${isSticky ? 'text-background' : 'text-foreground'} text-sm md:text-base lg:text-lg font-semibold flex items-center gap-px cursor-pointer`}
+          className={`text-foreground text-sm md:text-base lg:text-lg font-semibold flex items-center gap-px cursor-pointer`}
           aria-label="Email Tochukwu"
         >
           tochukwunwosa28@gmail.com
@@ -66,7 +57,7 @@ export default function NavBar() {
           {NavItems.map((item) => (
             <motion.li
               key={item.route}
-              className={`capitalize font-semibold text-lg cursor-pointer hidden lg:block ${isSticky ? 'text-background' : 'text-foreground'}`}
+              className={`capitalize font-semibold text-lg cursor-pointer hidden lg:block text-foreground`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -81,7 +72,7 @@ export default function NavBar() {
             aria-label="Open navigation menu"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="lg:hidden cursor-pointer size-12 grid place-items-center bg-foreground text-background dark:bg-background dark:text-foreground rounded-full p-2 shadow-lg dark:shadow-sm shadow-foreground"
+            className="lg:hidden cursor-pointer size-12 grid place-items-center bg-background text-foreground  rounded-full p-2 shadow-lg dark:shadow-sm shadow-foreground"
           >
             <Menu />
           </motion.button>
@@ -94,6 +85,6 @@ export default function NavBar() {
           <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
         )}
       </AnimatePresence>
-    </>
+    </div>
   )
 }

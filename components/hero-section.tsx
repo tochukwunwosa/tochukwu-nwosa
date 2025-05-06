@@ -23,19 +23,22 @@ export default function HeroSection() {
       animate="visible"
       id='about'
       aria-label='About Tochukwu Nwosa.'
-        className="relative pb-5 pt-40 lg:px-14 overflow-hidden"
+        className=" pb-5 pt-20 px-4 sm:px-6 relative overflow-hidden"
     >
 
+      {/* bg Overlay */}
+      <div className='bg-overlay'/>
+
       {/* Hero Content */}
-      <main className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
+      <div className="relative max-w-7xl z-10 mx-auto flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
         {/* name and links */}
         <motion.div
-          className="flex flex-col items-center lg:items-start space-y-5"
+          className="relative flex flex-col items-center lg:items-start space-y-5"
           variants={fadeUp}
           custom={1}
         >
           <motion.h1
-            className="hero-title text-center lg:text-left text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
+            className="hero-title text-center lg:text-left text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
             variants={fadeUp}
             custom={1}
           >
@@ -111,7 +114,7 @@ export default function HeroSection() {
             <ResumeDownload />
           </motion.div>
         </motion.div>
-      </main>
+      </div>
     </motion.section>
     </AnimatePresence>
   )

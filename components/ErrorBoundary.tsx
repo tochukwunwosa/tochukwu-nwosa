@@ -36,9 +36,13 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   render() {
     if (this.state.hasError) {
       return (
-        <div className='w-screen h-screen flex items-center justify-center flex-col'>
-          <h2>Sorry, the error is from us!</h2>
-          <Button variant={'outline'} onClick={this.handleReset} className='cursor-pointer mt-2'>Try again?</Button>
+        <div className='realtive w-screen h-screen flex items-center justify-center flex-col'>
+          {/* bg white overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
+          <div className='relative z-10'>
+            <h2>Sorry, the error is from us!</h2>
+            <Button variant={'outline'} onClick={this.handleReset} className='cursor-pointer mt-2 hover:scale-[1.02]'>Try again?</Button>
+          </div>
         </div>
       );
     }

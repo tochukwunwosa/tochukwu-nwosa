@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f1f1f1;
   --foreground: #171717;
 
   --font-satoshi: "Satoshi", sans-serif;
@@ -19,15 +19,22 @@
 
 .dark {
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #edededf2;
 }
 
 body {
-  background: var(--background);
+  @apply relative flex flex-col items-center justify-center min-h-screen;
+  background: url('/bg-grid.svg') repeat center center fixed;
   color: var(--foreground);
   font-family: var(--font-cabinet);
   scroll-behavior: smooth;
 }
+
+
+.bg-overlay {
+  @apply absolute inset-0 z-0 bg-gradient-to-b !from-[#f1f1f1] !to-[#171717] dark:!from-background/80 dark:!to-background/90;
+}
+
 
 html {
   overflow-x: hidden;

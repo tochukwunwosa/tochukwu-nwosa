@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import { experiencesData } from '../constants/experiencesData'
-import GridBG from './ui/grid-bg';
 import ExperienceCard from './ui/experience-card';
 
 const fadeUp = {
@@ -38,14 +37,12 @@ export default function ProfessionalExperience() {
       animate={isInView ? "visible" : "hidden"}
       id="experience"
       aria-label="Tochukwu Nwosa's experience."
-      className="snap-start py-24 bg-transparent">
-      {/* bg */}
-      <GridBG />
+      className="snap-start relative py-24 bg-transparent">
       {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98  !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
+      <div className='bg-overlay'/>
 
-      <main className='max-w-7xl relative mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className="text-center mb-20">
+      <main className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className=" text-center mb-20">
           <motion.h2
             variants={fadeUp}
             custom={1}
@@ -58,7 +55,7 @@ export default function ProfessionalExperience() {
             custom={2}
             className="font-sans text-lg md:text-xl font-normal text-primary-600 tracking-normal leading-relaxed max-w-2xl mx-auto">My journey in the industry</motion.p>
         </div>
-        <div className=''>
+        <div className='relative'>
           {/* vertical timeline line */}
           <motion.div
             variants={fadeUp}

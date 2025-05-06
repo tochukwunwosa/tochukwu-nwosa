@@ -26,8 +26,8 @@ const socials: NavLink[] = [
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
-    opacity: 1,
-    transition: {
+    opacity: 1, 
+    tron: {
       staggerChildren: 0.1,
       delayChildren: 0.1,
     }
@@ -68,7 +68,7 @@ export default function Footer() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       id="footer"
-      className="bg-background border-t border-foreground/20"
+      className="mt-auto w-full bg-background border-t border-foreground/20"
     >
       <main className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <motion.div

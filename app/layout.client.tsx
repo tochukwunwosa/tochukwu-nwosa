@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import NavBar from '@/components/nav/nav-bar';
-import GridBG from '@/components/ui/grid-bg';
 import Footer from '@/components/footer';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { AnimatePresence } from 'framer-motion';
@@ -33,12 +32,11 @@ export default function RootLayoutClient({
           disableTransitionOnChange
         >
           <ErrorBoundary>
-            <GridBG />
             
-      {/* bg Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/90 !to-foreground/97 dark:!from-background/90  dark:!to-background/97" />
             <NavBar />
-            <AnimatePresence>{children}</AnimatePresence>
+            <AnimatePresence>
+              {children}
+            </AnimatePresence>
             <Footer />
           </ErrorBoundary>
         </ThemeProvider>
