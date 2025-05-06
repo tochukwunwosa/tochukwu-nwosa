@@ -30,8 +30,6 @@ export default function Projects() {
 
       <GridBG/>
 
-      {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
       <motion.div
         variants={fadeUp}
         custom={1}

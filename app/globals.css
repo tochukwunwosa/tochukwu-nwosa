@@ -37,3 +37,16 @@ html {
 .hero-title {
   font-family: var(--font-satoshi);
 }
+
+.gridmove {
+  animation: gridmove 60s linear infinite;
+}
+
+@keyframes gridmove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
+}

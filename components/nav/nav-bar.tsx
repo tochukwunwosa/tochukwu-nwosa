@@ -20,14 +20,12 @@ export default function NavBar() {
   
 
   return (
-    <div className={` w-screen sticky top-0 transition-colors duration-300 `}>
-       {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
+    <div className={` w-screen z-50 bg-background sticky top-0 transition-colors duration-300 `}>
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-        className='relative z-50 w-full max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center justify-between' 
+        className='relative w-full max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center justify-between' 
       >
         
         {/* Theme toggle */}

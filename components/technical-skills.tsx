@@ -63,8 +63,6 @@ export default function TechnicalSkills() {
     >
 
        <GridBG/>
-      {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}

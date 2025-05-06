@@ -28,8 +28,6 @@ export default function Contact() {
       className="snap-start relative py-24">
 
          <GridBG/>
-      {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
       
       <main className='max-w-7xl z-10 mx-auto px-4 sm:px-6 lg:px-8 relative'>
         <div className="text-center mb-20">
