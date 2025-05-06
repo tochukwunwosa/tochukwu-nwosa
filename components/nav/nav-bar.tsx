@@ -54,7 +54,7 @@ export default function NavBar() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           whileHover={{ scale: 1.05 }}
-          className={`${isSticky ? 'text-background' : 'text-foreground'} text-base lg:text-lg font-semibold flex items-center gap-px cursor-pointer`}
+          className={`${isSticky ? 'text-background' : 'text-foreground'} text-sm md:text-base lg:text-lg font-semibold flex items-center gap-px cursor-pointer`}
           aria-label="Email Tochukwu"
         >
           tochukwunwosa28@gmail.com
