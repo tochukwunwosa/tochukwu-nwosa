@@ -24,7 +24,7 @@ export default function Contact() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       id="contact"
-      aria-label="Tochukwu Nwosa's experience."
+      aria-label="Contact Tochukwu Nwosa."
       className="snap-start py-24 bg-transparent">
 
       {/* bg */}

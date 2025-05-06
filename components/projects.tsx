@@ -25,7 +25,7 @@ export default function Projects() {
       animate={isInView ? "visible" : "hidden"}
       id="project"
       aria-label="Tochukwu Nwosa's projects"
-      className="snap-start relative py-24 bg-transparent "
+      className="snap-start py-24 bg-transparent "
     >
       <GridBG />
 

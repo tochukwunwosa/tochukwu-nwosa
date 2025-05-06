@@ -38,7 +38,7 @@ export default function ProfessionalExperience() {
       animate={isInView ? "visible" : "hidden"}
       id="experience"
       aria-label="Tochukwu Nwosa's experience."
-      className="snap-start  py-24 bg-transparent">
+      className="snap-start py-24 bg-transparent">
       {/* bg */}
       <GridBG />
       {/* bg white overlay */}

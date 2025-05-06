@@ -34,6 +34,9 @@ export default function RootLayoutClient({
         >
           <ErrorBoundary>
             <GridBG />
+            
+      {/* bg Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/90 !to-foreground/97 dark:!from-background/90  dark:!to-background/97" />
             <NavBar />
             <AnimatePresence>{children}</AnimatePresence>
             <Footer />

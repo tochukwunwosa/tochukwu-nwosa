@@ -133,7 +133,7 @@ export default function NavMenu({ openMenu, setOpenMenu }: NavMenuProp) {
             variants={closeButtonVariants}
             aria-label="Close navigation menu"
             onClick={closeMenu}
-            className="self-end cursor-pointer size-12 grid place-items-center bg-foreground text-background dark:bg-background dark:text-foreground rounded-full p-2 shadow-lg dark:shadow-sm shadow-foreground"
+            className="self-end cursor-pointer size-12 rounded-full border border-background grid place-items-center bg-foreground text-background dark:bg-background dark:text-foreground rounded-full p-2 shadow-lg dark:shadow-sm shadow-foreground"
           >
             <X />
           </motion.button>
