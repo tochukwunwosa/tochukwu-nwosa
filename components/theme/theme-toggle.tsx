@@ -65,13 +65,13 @@ export default function ModeToggle() {
         align="end"
         className="animate-in fade-in slide-in-from-top-4 bg-foreground"
       >
-        <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer">
+        <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer text-background">
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")} className="cursor-pointer">
+        <DropdownMenuItem onClick={() => setTheme("dark")} className="cursor-pointer text-background">
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")} className="cursor-pointer">
+        <DropdownMenuItem onClick={() => setTheme("system")} className="cursor-pointer text-background">
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
