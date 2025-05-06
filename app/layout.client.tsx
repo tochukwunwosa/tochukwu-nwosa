@@ -32,7 +32,6 @@ export default function RootLayoutClient({
           disableTransitionOnChange
         >
           <ErrorBoundary>
-            
             <NavBar />
             <AnimatePresence>
               {children}

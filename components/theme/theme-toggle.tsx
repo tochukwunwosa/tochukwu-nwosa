@@ -28,7 +28,7 @@ export default function ModeToggle() {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
-          className="relative size-12 cursor-pointer rounded-full bg-transparent bg-foreground text-background dark:bg-background dark:text-foreground shadow-lg dark:shadow-sm shadow-foreground grid place-items-center focus:outline-none"
+          className="relative size-12 cursor-pointer rounded-full  bg-background text-foreground shadow-sm shadow-foreground grid place-items-center focus:outline-none"
           aria-label="Toggle theme"
         >
 

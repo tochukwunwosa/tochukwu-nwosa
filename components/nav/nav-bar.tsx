@@ -70,7 +70,7 @@ export default function NavBar() {
             aria-label="Open navigation menu"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="lg:hidden cursor-pointer size-12 grid place-items-center bg-background text-foreground  rounded-full p-2 shadow-lg dark:shadow-sm shadow-foreground"
+            className="lg:hidden cursor-pointer size-12 grid place-items-center bg-background text-foreground  rounded-full p-2 shadow-sm shadow-foreground"
           >
             <Menu />
           </motion.button>
