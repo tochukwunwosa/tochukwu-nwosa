@@ -39,7 +39,7 @@ export default function ProfessionalExperience() {
       aria-label="Tochukwu Nwosa's experience."
       className="snap-start relative py-24 bg-transparent">
       {/* bg white overlay */}
-      <div className='bg-overlay'/>
+      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/80 dark:!to-background/90" />
 
       <main className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className=" text-center mb-20">
