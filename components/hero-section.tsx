@@ -23,7 +23,7 @@ export default function HeroSection() {
       animate="visible"
       id='about'
       aria-label='About Tochukwu Nwosa.'
-        className=" pb-5 pt-20 px-4 sm:px-6 relative overflow-hidden"
+        className=" pb-5 pt-20 px-4 sm:px-6 overflow-hidden"
     >
 
       {/* bg Overlay */}
@@ -38,7 +38,7 @@ export default function HeroSection() {
           custom={1}
         >
           <motion.h1
-            className="hero-title text-center lg:text-left text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
+            className="hero-title text-center lg:text-left text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold"
             variants={fadeUp}
             custom={1}
           >

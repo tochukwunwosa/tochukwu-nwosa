@@ -59,11 +59,11 @@ export default function TechnicalSkills() {
       animate={isInView ? "visible" : "hidden"}
       id="skill"
       aria-label="Tochukwu Nwosa's technical skills"
-      className="snap-start relative py-24 bg-transparent"
+      className="snap-start  py-24 bg-transparent"
     >
       {/* bg white overlay */}
       <div className='bg-overlay'/>
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}
           custom={1}
