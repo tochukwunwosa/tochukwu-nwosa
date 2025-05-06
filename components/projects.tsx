@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import { projectsData } from '../constants/projectsData'
 import ProjectCard from './ui/project-card';
-import GridBG from './ui/grid-bg'
+// import GridBG from './ui/grid-bg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -28,7 +28,7 @@ export default function Projects() {
       className="snap-start relative py-24 "
     >
 
-      <GridBG/>
+      {/* <GridBG/> */}
 
       <motion.div
         variants={fadeUp}

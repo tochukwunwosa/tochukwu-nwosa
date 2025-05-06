@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import { experiencesData } from '../constants/experiencesData'
 import ExperienceCard from './ui/experience-card';
-import GridBG from './ui/grid-bg'
+// import GridBG from './ui/grid-bg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -39,7 +39,7 @@ export default function ProfessionalExperience() {
       id="experience"
       aria-label="Tochukwu Nwosa's experience."
       className="snap-start relative py-24 ">
-        <GridBG/>
+        {/* <GridBG/> */}
 
       <main className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className=" text-center mb-20">

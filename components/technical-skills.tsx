@@ -17,7 +17,7 @@ import {
   SiPostgresql,
   SiGraphql
 } from 'react-icons/si';
-import GridBG from './ui/grid-bg'
+// import GridBG from './ui/grid-bg'
 import { IconType } from 'react-icons';
 
 interface TechnicalSkill {
@@ -62,7 +62,7 @@ export default function TechnicalSkills() {
       className="snap-start relative py-24 "
     >
 
-       <GridBG/>
+       {/* <GridBG/> */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}

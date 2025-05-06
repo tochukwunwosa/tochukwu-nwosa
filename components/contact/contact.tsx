@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import ContactForm from './form';
-import GridBG from '../ui/grid-bg'
+// import GridBG from '../ui/grid-bg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -27,7 +27,7 @@ export default function Contact() {
       aria-label="Contact Tochukwu Nwosa."
       className="snap-start relative py-24">
 
-         <GridBG/>
+         {/* <GridBG/> */}
       
       <main className='max-w-7xl z-10 mx-auto px-4 sm:px-6 lg:px-8 relative'>
         <div className="text-center mb-20">
