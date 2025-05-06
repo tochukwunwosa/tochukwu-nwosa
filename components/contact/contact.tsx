@@ -34,14 +34,14 @@ export default function Contact() {
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="font-display text-4xl md:text-5xl font-medium tracking-tight text-primary-900 mb-4"
+            className="font-display text-4xl md:text-5xl font-medium tracking-tight mb-4"
           >
             {`Let’s Connect and Build Something Great`}
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="font-sans text-lg md:text-xl font-normal text-primary-600 tracking-normal leading-relaxed max-w-2xl mx-auto"
+            className="font-sans text-lg md:text-xl font-normal tracking-normal leading-relaxed max-w-2xl mx-auto"
           >
             {`Whether you have a question, collaboration idea, or project in mind—feel free to reach out. I'm always open to meaningful conversations and exciting opportunities.`}
           </motion.p>

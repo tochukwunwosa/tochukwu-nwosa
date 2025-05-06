@@ -71,12 +71,12 @@ export default function TechnicalSkills() {
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="text-4xl md:text-5xl font-title font-semibold text-primary-800 mb-12 text-center">Technical Skills
+            className="text-4xl md:text-5xl font-title font-semibold mb-12 text-center">Technical Skills
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="font-sans text-lg text-primary-600 tracking-medium leading-relaxed max-w-2xl mx-auto">A comprehensive list of technologies and tools I work with
+            className="font-sans text-lg tracking-medium leading-relaxed max-w-2xl mx-auto">A comprehensive list of technologies and tools I work with
           </motion.p>
         </motion.div>
         <motion.div

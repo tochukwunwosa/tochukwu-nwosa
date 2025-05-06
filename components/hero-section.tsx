@@ -77,7 +77,7 @@ export default function HeroSection() {
                 href="https://www.github.com/obere4u"
                 target="_blank"
                 rel="noopener noreferrer"
-                className='flex items-center justify-center cursor-pointer size-12 bg-foreground text-background dark:bg-background dark:text-foreground rounded-full shadow-lg dark:shadow-sm shadow-foreground'
+                className='flex items-center justify-center cursor-pointer size-12 bg-foreground text-background dark:bg-background dark:text-foreground rounded-full shadow-sm shadow-foreground'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -87,7 +87,7 @@ export default function HeroSection() {
                 href="https://www.linkedin.com/in/nwosa-tochukwu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className='flex items-center justify-center cursor-pointer size-12 bg-foreground text-background dark:bg-background dark:text-foreground rounded-full shadow-lg dark:shadow-sm shadow-foreground'
+                className='flex items-center justify-center cursor-pointer size-12 bg-foreground text-background dark:bg-background dark:text-foreground rounded-full shadow-sm shadow-foreground'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
