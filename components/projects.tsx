@@ -25,13 +25,13 @@ export default function Projects() {
       animate={isInView ? "visible" : "hidden"}
       id="project"
       aria-label="Tochukwu Nwosa's projects"
-      className="snap-start relative py-24 bg-transparent "
+      className="snap-start relative py-24 "
     >
 
       <GridBG/>
 
       {/* bg white overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/80 dark:!to-background/90" />
+      <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
       <motion.div
         variants={fadeUp}
         custom={1}

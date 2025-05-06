@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f1f1f1;
+  --background: #ffffff;
   --foreground: #171717;
 
   --font-satoshi: "Satoshi", sans-serif;
@@ -19,15 +19,13 @@
 
 .dark {
   --background: #0a0a0a;
-  --foreground: #edededf2;
+  --foreground: #ededed;
 }
 
 body {
-  @apply relative flex flex-col items-center justify-center min-h-screen;
-  background: url('/bg-grid.svg') repeat center center fixed;
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-cabinet);
-  scroll-behavior: smooth;
 }
 
 html {

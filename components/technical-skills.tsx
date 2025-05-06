@@ -59,7 +59,7 @@ export default function TechnicalSkills() {
       animate={isInView ? "visible" : "hidden"}
       id="skill"
       aria-label="Tochukwu Nwosa's technical skills"
-      className="snap-start relative py-24 bg-transparent"
+      className="snap-start relative py-24 "
     >
 
        <GridBG/>
