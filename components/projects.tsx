@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import { projectsData } from '../constants/projectsData'
 import ProjectCard from './ui/project-card';
+import GridBG from './ui/grid-bg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -26,6 +27,8 @@ export default function Projects() {
       aria-label="Tochukwu Nwosa's projects"
       className="snap-start relative py-24 bg-transparent "
     >
+
+      <GridBG/>
 
       {/* bg white overlay */}
       <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/80 dark:!to-background/90" />

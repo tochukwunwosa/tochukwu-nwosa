@@ -5,6 +5,7 @@ import { GithubIcon } from './ui/icons/github'
 import { LinkedinIcon } from './ui/icons/linkedin'
 import AboutMeCard from './ui/about-me-card'
 import ResumeDownload from './resume-downlaod'
+import GridBG from './ui/grid-bg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -25,7 +26,7 @@ export default function HeroSection() {
       aria-label='About Tochukwu Nwosa.'
         className=" pb-5 pt-20 px-4 sm:px-6 overflow-hidden"
     >
-
+ <GridBG/>
         {/* bg Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
 

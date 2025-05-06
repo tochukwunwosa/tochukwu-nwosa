@@ -30,12 +30,6 @@ body {
   scroll-behavior: smooth;
 }
 
-
-.bg-overlay {
-  @apply absolute inset-0 z-0 bg-gradient-to-b !from-foreground/97 !to-foreground/97 dark:!from-background/97 dark:!to-background/97;
-}
-
-
 html {
   overflow-x: hidden;
   min-width: 100%;
