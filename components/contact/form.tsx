@@ -148,7 +148,7 @@ export default function ContactForm() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>What would you like us to build or collaborate on?</FormLabel>
+                    <FormLabel>What would you like us to build or collaborate on? <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="E.g., I want you to bring my design to live..."
