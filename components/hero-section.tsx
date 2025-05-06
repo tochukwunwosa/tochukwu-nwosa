@@ -24,7 +24,7 @@ export default function HeroSection() {
         animate="visible"
         id='about'
         aria-label='About Tochukwu Nwosa.'
-        className=" pb-5 relative pt-24 overflow-hidden"
+        className="relative py-24 overflow-hidden"
       >
         {/* <GridBG /> */}
 

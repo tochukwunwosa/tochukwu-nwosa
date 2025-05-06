@@ -34,13 +34,19 @@ export default function Projects() {
         variants={fadeUp}
         custom={1}
         className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <motion.h2
-          variants={fadeUp}
-          custom={1}
-          className="text-4xl md:text-5xl font-title font-semibold mb-12 text-center"
-        >
-          Featured Projects
-        </motion.h2>
+        <div className=" text-center mb-20">
+          <motion.h2
+            variants={fadeUp}
+            custom={1}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tight mb-4"
+          >
+            Featured Projects
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            custom={2}
+            className="font-sans text-lg md:text-xl font-normal tracking-normal leading-relaxed max-w-2xl mx-auto">Explore a selection of projects that highlight my experience and capabilities.</motion.p>
+        </div>
         {/* projects card */}
         <motion.div
           variants={fadeUp}
