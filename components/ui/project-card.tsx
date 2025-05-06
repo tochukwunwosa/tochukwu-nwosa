@@ -47,7 +47,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <motion.div 
           variants={slideLeft} 
           custom={1} 
-          className='w-full lg:w-1/2 aspect-video relative overflow-hidden group-hover:scale-105 transition-transform duration-500 ease-in-out'
+          className='w-full lg:w-1/2 aspect-video  overflow-hidden group-hover:scale-105 transition-transform duration-500 ease-in-out'
         >
           <Image src={project.image} width={400} height={400} alt='image of project' className='border w-full h-full  transform transition-all duration-700' />
         </motion.div>

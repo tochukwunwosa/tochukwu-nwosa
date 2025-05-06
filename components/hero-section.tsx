@@ -31,7 +31,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98 !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
 
         {/* Hero Content */}
-        <div className=" max-w-7xl px-4 sm:px-6 lg:px-8 z-10 mx-auto flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
+        <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 z-10 mx-auto flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
           {/* name and links */}
           <motion.div
             className=" flex flex-col items-center lg:items-start space-y-5"
