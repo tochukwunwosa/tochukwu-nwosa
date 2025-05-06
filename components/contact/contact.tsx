@@ -33,7 +33,7 @@ export default function Contact() {
       <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98  !to-foreground/98 dark:!from-background/98 dark:!to-background/98 z-0  " />
       
       <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
-        <div className="relative text-center mb-20">
+        <div className="text-center mb-20">
           <motion.h2
             variants={fadeUp}
             custom={1}

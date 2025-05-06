@@ -30,7 +30,7 @@ export default function HeroSection() {
       <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
         {/* name and links */}
         <motion.div
-          className="relative flex flex-col items-center lg:items-start space-y-5"
+          className="flex flex-col items-center lg:items-start space-y-5"
           variants={fadeUp}
           custom={1}
         >

@@ -45,7 +45,7 @@ export default function ProfessionalExperience() {
       <div className="absolute inset-0 bg-gradient-to-b !from-foreground/98  !to-foreground/98 dark:!from-background/98 dark:!to-background/98" />
 
       <main className='max-w-7xl relative mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className="relative text-center mb-20">
+        <div className="text-center mb-20">
           <motion.h2
             variants={fadeUp}
             custom={1}
@@ -58,7 +58,7 @@ export default function ProfessionalExperience() {
             custom={2}
             className="font-sans text-lg md:text-xl font-normal text-primary-600 tracking-normal leading-relaxed max-w-2xl mx-auto">My journey in the industry</motion.p>
         </div>
-        <div className='relative'>
+        <div className=''>
           {/* vertical timeline line */}
           <motion.div
             variants={fadeUp}

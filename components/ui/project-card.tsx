@@ -35,20 +35,19 @@ export default function ProjectCard({ project }: { project: Project }) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"} 
       transition={{ duration: 0.4 }}
-      className='space-y-10 group relative border-b-2 border-foreground/5 dark:border-foreground/10 pb-12 last:border-none'
+      className='space-y-10 group  border-b-2 border-foreground/5 dark:border-foreground/10 pb-12 last:border-none'
     >
       <motion.div 
         variants={fadeUp} 
         custom={1} 
         className="flex flex-col lg:flex-row gap-8 items-center"
       >
-        {/* overlay */}
-        <div className='absolute inset-0 bg-foreground/30 hover:bg-foreground/0 dark:bg-background/30 dark:hover:bg-background/0 transition-all duration-500' />
+       
         {/* image */}
         <motion.div 
           variants={slideLeft} 
           custom={1} 
-          className='w-full lg:w-1/2 aspect-video relative overflow-hidden group-hover:scale-105 transition-transform duration-500 ease-in-out'
+          className='w-full lg:w-1/2 aspect-video  overflow-hidden group-hover:scale-105 transition-transform duration-500 ease-in-out'
         >
           <Image src={project.image} width={400} height={400} alt='image of project' className='border w-full h-full  transform transition-all duration-700' />
         </motion.div>
@@ -72,7 +71,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             ))}
           </motion.div>
           <div
-            className="relative flex w-fit gap-6 pt-4"
+            className=" flex w-fit gap-6 pt-4"
           >
             {
               project.githubLink ?

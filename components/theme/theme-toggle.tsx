@@ -63,7 +63,7 @@ export default function ModeToggle() {
 
       <DropdownMenuContent
         align="end"
-        className="animate-in fade-in slide-in-from-top-2"
+        className="animate-in fade-in slide-in-from-top-4 bg-foreground"
       >
         <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer">
           Light
