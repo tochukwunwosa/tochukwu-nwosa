@@ -68,7 +68,7 @@ Implemented **Umami** for privacy-focused analytics. Set the following environme
 NEXT_PUBLIC_UMAMI_WEBSITE_ID=your_umami_website_id
 ```
 
-Get Emailjs here https://umami.is
+Get Umami here https://umami.is
 
 ## 🚀 Getting Started
 
