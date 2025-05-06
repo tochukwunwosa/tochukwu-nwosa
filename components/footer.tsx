@@ -78,7 +78,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <motion.div
               variants={itemVariants}
-              className="space-y-4 lg:col-span-2"
+              className="space-y-4 md:col-span-2"
             >
               <motion.h3
                 variants={itemVariants}

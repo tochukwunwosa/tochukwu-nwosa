@@ -19,7 +19,7 @@ export default function AboutMeCard() {
     <Card
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`border rounded-xl transition-all duration-300 ease-in-out ${isHovered ? "border-2 border-foreground/20 " : "border-foreground/50 scale-100"
+      className={`border max-w-lg rounded-xl transition-all duration-300 ease-in-out ${isHovered ? "border-2 border-foreground/20 " : "border-foreground/50 scale-100"
         }  dark:shadow-foreground/10 bg-background dark:shadow-md `}>
       <CardHeader>
         <CardTitle className="text-xl md:text-3xl font-bold dark:text-foreground/80 tracking-wide">
