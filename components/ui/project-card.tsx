@@ -29,6 +29,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   if (!project) return null;
 
   return (
+    
     <motion.div 
       ref={ref} 
       initial="hidden"

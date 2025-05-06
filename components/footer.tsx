@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 interface NavLink {
   name: string;
@@ -13,6 +14,7 @@ const navLinks: NavLink[] = [
   { name: 'Projects', route: '#project' },
   { name: 'Skills', route: '#skill' },
   { name: 'Experience', route: '#experience' },
+  { name: 'contact', route: '#contact' },
 ]
 
 const socials: NavLink[] = [
@@ -60,28 +62,6 @@ const linkVariants = {
 export default function Footer() {
   const year = new Date().getFullYear()
 
-  // Smooth scroll function
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    // Only apply to internal links (starting with #)
-    if (targetId.startsWith('#')) {
-      e.preventDefault();
-
-      const targetElement = document.querySelector(targetId);
-      
-
-      if (targetElement) {
-        // Smooth scroll to the element
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-
-        // Update URL hash without causing a jump
-        window.history.pushState(null, '', targetId);
-      }
-    }
-  };
-
   return (
     <motion.footer
       initial="hidden"
@@ -124,24 +104,22 @@ export default function Footer() {
               >
                 Quick Links
               </motion.h4>
-              <motion.nav
+              <motion.ul
                 variants={containerVariants}
                 className="flex flex-col space-y-2"
               >
                 {navLinks.map((link, index) => (
-                  <motion.a
+                  <motion.li
                     key={link.route}
                     variants={linkVariants}
                     custom={index + 1}
                     whileHover={{ x: 5 }}
-                    href={link.route}
-                    onClick={(e) => handleSmoothScroll(e, link.route)}
                     className="w-fit text-foreground/60 cursor-pointer hover:text-foreground/90 transition-colors"
                   >
-                    {link.name}
-                  </motion.a>
+                    <Link href={link.route}> {link.name}</Link>
+                  </motion.li>
                 ))}
-              </motion.nav>
+              </motion.ul>
             </motion.div>
 
             <motion.div

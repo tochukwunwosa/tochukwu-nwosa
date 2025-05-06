@@ -31,6 +31,7 @@ export default function ProfessionalExperience() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
+    
     <motion.section
       ref={sectionRef}
       initial="hidden"

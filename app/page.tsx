@@ -1,4 +1,5 @@
 
+import Contact from "@/components/contact/contact";
 import HeroSection from "@/components/hero-section";
 import ProfessionalExperience from "@/components/professional-experience";
 import Projects from "@/components/projects";
@@ -11,6 +12,7 @@ export default function Home() {
       <Projects />
       <TechnicalSkills />
       <ProfessionalExperience />
+      <Contact />
     </div>
   );
 }

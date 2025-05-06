@@ -16,3 +16,8 @@ declare interface Experience {
   align: "left" | "right";
   bullets: string[];
 }
+
+declare interface NavItem {
+  name: string;
+  route: string
+}

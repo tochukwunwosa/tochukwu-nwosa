@@ -3,8 +3,8 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import { motion, AnimatePresence } from "framer-motion"
 
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,25 +25,46 @@ export default function ModeToggle() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="relative cursor-pointer rounded-full border-0 focus-visible:ring-0"
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative size-12 cursor-pointer rounded-full bg-transparent bg-foreground text-background dark:bg-background dark:text-foreground shadow-lg dark:shadow-sm shadow-foreground grid place-items-center focus:outline-none"
+          aria-label="Toggle theme"
         >
-          {/* Sun */}
-          <Sun
-            className={`absolute h-[1.2rem] w-[1.2rem]  transition-opacity duration-300 ${theme === "dark" ? "opacity-0" : "opacity-100"
-              }`}
-          />
-          {/* Moon */}
-          <Moon
-            className={`absolute h-[1.2rem] w-[1.2rem] transition-opacity duration-300 ${theme === "dark" ? "opacity-100" : "opacity-0"
-              }`}
-          />
+
+          <AnimatePresence mode="wait" initial={false}>
+            {theme === "dark" ? (
+              <motion.div
+                key="moon"
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.3 }}
+                className="absolute"
+              >
+                <Moon />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="sun"
+                initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                transition={{ duration: 0.3 }}
+                className="absolute"
+              >
+                <Sun />
+              </motion.div>
+            )}
+          </AnimatePresence>
           <span className="sr-only">Toggle theme</span>
-        </Button>
+        </motion.button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+
+      <DropdownMenuContent
+        align="end"
+        className="animate-in fade-in slide-in-from-top-2"
+      >
         <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer">
           Light
         </DropdownMenuItem>

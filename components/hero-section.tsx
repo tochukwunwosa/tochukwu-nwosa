@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { GithubIcon } from './ui/icons/github'
 import { LinkedinIcon } from './ui/icons/linkedin'
 import AboutMeCard from './ui/about-me-card'
@@ -17,6 +17,7 @@ const fadeUp = {
 
 export default function HeroSection() {
   return (
+    <AnimatePresence>
     <motion.section
       initial="hidden"
       animate="visible"
@@ -50,13 +51,24 @@ export default function HeroSection() {
           >
             Full-stack Developer
           </motion.span>
-          <motion.p
-            className="dark:text-foreground/70 text-center lg:text-left text-base sm:text-lg max-w-2xl sm:mx-0 pl-4"
-            variants={fadeUp}
-            custom={3}
-          >
-            I create excellent, and inclusive web interfaces.
-          </motion.p>
+            <motion.div
+              className="dark:text-foreground/70 text-center lg:text-left text-base sm:text-lg max-w-2xl sm:mx-0 pl-4"
+              variants={fadeUp}
+              custom={3}
+            >
+              Currently building
+              <motion.a
+                href="https://claimmate.vercel.app"
+                target="_blank"
+                rel="noreferrer noopener"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.95 }}
+                className="underline text-blue-500 mx-1 inline-block "
+              >
+                ClaimMate
+              </motion.a>
+            </motion.div>
+
           <motion.div
             className='grid grid-cols-2 gap-5 w-fit'
             variants={fadeUp}
@@ -104,5 +116,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
     </motion.section>
+    </AnimatePresence>
   )
 }
