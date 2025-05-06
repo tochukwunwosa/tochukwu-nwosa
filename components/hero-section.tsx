@@ -26,11 +26,11 @@ export default function HeroSection() {
       className=" pb-5 pt-40 lg:px-14 relative overflow-hidden"
     >
 
-      {/* White Overlay */}
+      {/* bg Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b !from-foreground/90 !to-foreground/97 dark:!from-background/90  dark:!to-background/97" />
 
       {/* Hero Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
+      <main className="relative z-[10] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row space-y-20 lg:space-y-0 lg:justify-between">
         {/* name and links */}
         <motion.div
           className="relative flex flex-col items-center lg:items-start space-y-5"
@@ -114,7 +114,7 @@ export default function HeroSection() {
             <ResumeDownload />
           </motion.div>
         </motion.div>
-      </div>
+      </main>
     </motion.section>
     </AnimatePresence>
   )
