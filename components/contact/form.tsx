@@ -43,31 +43,33 @@ export default function ContactForm() {
 
   const onSubmit = async (data: WaitlistValues) => {
     try {
-
-      // Send message email to the user via EmailJS
       const templateParams = {
         name: data.name,
         email: data.email,
         message: data.message,
-        year: new Date().getFullYear()
+        year: new Date().getFullYear(),
+      };
+
+      const clientTemplateParams = {
+        name: data.name,
+        email: data.email,
+      };
+
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const tochiTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_TOCHI;
+      const clientTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_CLIENT;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !tochiTemplateId || !clientTemplateId || !publicKey) {
+        console.error('Missing EmailJS environment variables');
+        return;
       }
 
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-
-      if (!serviceId || !templateId || !publicKey) return null
-
-      emailjs.send(serviceId, templateId, templateParams, {
-        publicKey,
-      }).then(
-        (result) => {
-          console.log('Email sent successfully:', result.text);
-        },
-        (error) => {
-          console.error('Error sending email:', error.text);
-        }
-      );
+      // Send both emails in parallel
+      await Promise.all([
+        emailjs.send(serviceId, tochiTemplateId, templateParams, { publicKey }), //send me to me
+        emailjs.send(serviceId, clientTemplateId, clientTemplateParams, { publicKey }) //send acknowledgment to client
+      ]);
 
       setIsSuccess(true);
       reset();
@@ -75,6 +77,7 @@ export default function ContactForm() {
       console.error('Error submitting form:', error);
     }
   };
+
 
 
   return (
@@ -172,7 +175,7 @@ export default function ContactForm() {
                   className="cursor-pointer w-full bg-foreground text-background"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Contact Tochukwu"}
+                  {isSubmitting ? "Sending..." : "Send a message"}
                 </Button>
               </motion.div>
             </form>
