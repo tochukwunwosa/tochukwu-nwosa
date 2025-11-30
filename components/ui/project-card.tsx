@@ -3,115 +3,163 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import Image from 'next/image'
+import type { Project } from '@/constants/projectsData';
+import Link from 'next/link';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
-  }),
-}
-
-const slideLeft = {
-  hidden: { opacity: 0, x: -40 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
+    transition: { delay: i * 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }
   }),
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
   if (!project) return null;
 
   return (
-    <motion.div 
-      ref={ref} 
+    <motion.div
+      ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"} 
-      transition={{ duration: 0.4 }}
-      className='space-y-10 group relative border-b-2 border-foreground/5 dark:border-foreground/10 pb-12 last:border-none'
+      animate={isInView ? "visible" : "hidden"}
+      className='group relative border-b border-foreground/5 pb-12 last:border-none'
     >
-      <motion.div 
-        variants={fadeUp} 
-        custom={1} 
-        className="flex flex-col lg:flex-row gap-8 items-center"
-      >
-        {/* overlay */}
-        <div className='hidden lg:block absolute inset-0 bg-foreground/30 hover:bg-foreground/0 dark:bg-background/30 dark:hover:bg-background/0 transition-all duration-500' />
-        {/* image */}
-        <motion.div 
-          variants={slideLeft} 
-          custom={1} 
-          className='w-full lg:w-1/2 aspect-video relative overflow-hidden group-hover:scale-105 transition-transform duration-500 ease-in-out'
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+
+        {/* IMAGE */}
+        <motion.div
+          variants={fadeUp}
+          custom={1}
+          className='w-full lg:w-1/2 relative overflow-hidden rounded-lg border border-foreground/10'
         >
-          <Image src={project.image} width={400} height={400} alt='image of project' className='border w-full h-full  transform transition-all duration-700' />
+          <Link
+            href={project.liveDemoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block aspect-video relative overflow-hidden group/image"
+          >
+            <Image
+              src={project.image}
+              width={666}
+              height={375}
+              alt={`Screenshot of ${project.title}`}
+              className='w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105'
+            />
+
+            {/* Overlay on hover */}
+            <div className="absolute inset-0 bg-foreground/0 group-hover/image:bg-foreground/5 transition-colors duration-300" />
+
+            {/* Featured badge */}
+            {project.featured && (
+              <div className="absolute top-3 right-3 px-2.5 py-1 bg-foreground text-background text-xs font-semibold rounded">
+                Featured
+              </div>
+            )}
+          </Link>
         </motion.div>
-        <div className='w-full lg:w-1/2 space-y-6'>
-          <motion.h3 variants={fadeUp} custom={2} className="text-3xl font-bold transition-all duration-300">{project.title}</motion.h3>
-          <motion.p variants={fadeUp} custom={3} className="text-lg leading-relaxed">{project.description}</motion.p>
+
+        {/* CONTENT */}
+        <div className='w-full lg:w-1/2 space-y-4'>
+
+          {/* Category badge */}
+          <motion.div variants={fadeUp} custom={2}>
+            <span className="inline-block px-2.5 py-0.5 text-xs font-medium bg-foreground/5 text-foreground/70 rounded border border-foreground/10 uppercase tracking-wide">
+              {project.category === "product" ? "Personal Project" : "Client Work"}
+            </span>
+          </motion.div>
+
+          {/* Title & Subtitle */}
+          <motion.div variants={fadeUp} custom={2}>
+            <h3 className="text-2xl md:text-3xl font-bold mb-2">
+              {project.title}
+            </h3>
+            <p className="text-base md:text-lg text-foreground/80 font-medium">
+              {project.subtitle}
+            </p>
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            variants={fadeUp}
+            custom={3}
+            className="text-sm md:text-base leading-relaxed text-foreground/70"
+          >
+            {project.description}
+          </motion.p>
+
+          {/* Metrics */}
+          {project.metrics && project.metrics.length > 0 && (
+            <motion.div
+              variants={fadeUp}
+              custom={4}
+              className="flex flex-wrap gap-3 pt-2"
+            >
+              {project.metrics.map((metric, idx) => (
+                <span
+                  key={idx}
+                  className="text-xs font-semibold text-foreground/80"
+                >
+                  ✓ {metric}
+                </span>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Technologies */}
           <motion.div
             variants={fadeUp}
-            custom={4}
-            className="flex flex-wrap gap-3"
+            custom={5}
+            className="flex flex-wrap gap-2"
           >
-            {project.technologies.map((tech: string, idx: number) => (
-              <motion.span 
-                variants={fadeUp}
-                custom={idx + 1} 
-                key={tech}
-                className="px-4 py-2 text-sm font-medium bg-foreground/10 rounded-lg"
+            {project.technologies.map((tech, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-1 text-xs font-medium bg-foreground/5 text-foreground/70 rounded border border-foreground/10"
               >
                 {tech}
-              </motion.span>
+              </span>
             ))}
           </motion.div>
-          <div
-            className="relative flex w-fit gap-6 pt-4"
+
+          {/* Links */}
+          <motion.div
+            variants={fadeUp}
+            custom={6}
+            className="flex flex-wrap gap-4 pt-2"
           >
-            {
-              project.githubLink ?
-                <motion.a
 
-                  variants={fadeUp}
-                  custom={5} 
-                  className="flex items-center gap-2 text-foreground/70 hover:text-foreground/90 hover:scale-105 transition-all duration-300"
-                  tabIndex={0}
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub link"
-                >
-                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 496 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
-                  </svg>
-                  <span className="font-medium">View Code</span>
-                </motion.a>
-                : null
-            }
-
-            <motion.a
-              variants={fadeUp}
-              custom={6}
+            <Link
               href={project.liveDemoLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View live demo"
-              className="flex items-center gap-2 text-foreground/70 hover:text-foreground/90 transition-all hover:scale-105 duration-300"
-              tabIndex={0}
+              className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors group/link"
             >
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path>
+              <svg className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-              <span className="font-medium">Live Demo</span>
-            </motion.a>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
+              <span>Live Demo</span>
+            </Link>
+
+            {project.githubLink && (
+              <Link
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors group/link"
+              >
+                <svg className="w-4 h-4 transition-transform group-hover/link:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+                <span>View Code</span>
+              </Link>
+            )}
+          </motion.div>
+        </div >
+      </div >
+    </motion.div >
   )
 }

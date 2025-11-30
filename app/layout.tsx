@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import RootLayoutClient from "./layout.client";
 
 export const metadata: Metadata = {
-  title: "Tochukwu Nwosa | Expert Frontend Developer & React Specialist",
+  title: "Tochukwu Nwosa - Frontend Engineer | React, Next.js, TypeScript",
   description:
-    "Professional portfolio of Tochukwu Nwosa, a frontend developer specializing in creating high-performance, accessible web applications using React, Next.js, TypeScript, and Tailwind CSS. View my projects, skills, and experience.",
+    "Frontend Engineer with 3+ years experience. 40% performance improvements, 98+ PageSpeed scores. React, Next.js, TypeScript specialist.",
   keywords: [
     "Tochukwu Nwosa",
     "Frontend Developer Portfolio",
@@ -43,11 +43,11 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://tochukwu-nwosa.vercel.app"),
   openGraph: {
-    title: "Tochukwu Nwosa | Professional Frontend Developer & React Expert",
+    title: "ochukwu Nwosa - Frontend Engineer | React, Next.js, TypeScript",
     description:
-      "Explore my portfolio showcasing modern, high-performance web applications built with React, Next.js, TypeScript, and Tailwind CSS. Specializing in responsive design, accessibility, and SEO-friendly development.",
+      "Building fast, scalable web applications. 40% performance gains, 30% engagement increase.",
     url: "https://tochukwu-nwosa.vercel.app",
-    siteName: "Tochukwu Nwosa - Frontend Developer Portfolio",
+    siteName: "Tochukwu Nwosa - Frontend Developer",
     images: [
       {
         url: "https://tochukwu-nwosa.vercel.app/og-image.png",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tochukwu Nwosa | Frontend Developer & React Specialist",
-    description:
-      "Professional portfolio showcasing expertise in Next.js, React, TypeScript, and modern frontend development. View my projects, technical skills, and development approach.",
+      title: "Tochukwu Nwosa - Frontend Engineer | React, Next.js, TypeScript",
+      description:
+      "Building fast, scalable web applications. 40% performance gains, 30% engagement increase.",
     site: "@obere4u",
     creator: "@obere4u",
     images: ["https://tochukwu-nwosa.vercel.app/og-image.png"],

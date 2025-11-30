@@ -1,91 +1,106 @@
-'use client'
-
-import { useRef } from 'react';
-import { useInView, motion } from 'framer-motion';
-import { experiencesData } from '../constants/experiencesData'
-import ExperienceCard from './ui/experience-card';
-// import GridBG from './ui/grid-bg'
+"use client"
+import { useRef } from "react"
+import { motion, useScroll, useSpring, useInView } from "framer-motion"
+import { experiencesData } from "@/constants/experiencesData"
+import ExperienceCard from "@/components/ui/experience-card"
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
+    transition: { delay: i * 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }
   }),
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
-}
-
 export default function ProfessionalExperience() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const sectionRef = useRef<HTMLElement>(null)
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+
+  // Track scroll through timeline
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start center", "end center"]
+  })
+
+  // Smooth the animation
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 25,
+    restDelta: 0.001
+  })
 
   return (
-    
     <motion.section
       ref={sectionRef}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       id="experience"
-      aria-label="Tochukwu Nwosa's experience."
-      className="snap-start relative py-24 ">
-        {/* <GridBG/> */}
+      className="snap-start relative py-20 md:py-24"
+    >
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <main className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className=" text-center mb-20">
+        {/* HEADER */}
+        <div className="text-center mb-16 md:mb-20">
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="font-display text-4xl md:text-5xl font-medium tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
             Professional Experience
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="font-sans text-lg md:text-xl font-normal tracking-normal leading-relaxed max-w-2xl mx-auto">My journey in the industry</motion.p>
+            className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
+          >
+            3+ years building products that users love
+          </motion.p>
         </div>
-        <div className='relative'>
-          {/* vertical timeline line */}
+
+        {/* TIMELINE */}
+        <div ref={timelineRef} className="relative">
+
+          {/* Background line - thin, subtle */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-foreground/10 md:-translate-x-0.5" />
+
+          {/* Progressive line - fills on scroll */}
           <motion.div
-            variants={fadeUp}
-            custom={3}
-            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-foreground/30 transform md:-translate-x-px
-             before:content-[''] before:absolute before:top-0 before:w-full before:h-8 before:bg-gradient-to-b before:from-background before:to-transparent
-             after:content-[''] after:absolute after:bottom-0 after:w-full after:h-8 after:bg-gradient-to-t after:from-background after:to-transparent"
+            className="absolute left-8 md:left-1/2 top-0 w-px bg-foreground md:-translate-x-0.5"
+            style={{
+              height: "100%",
+              scaleY: smoothProgress,
+              transformOrigin: "top"
+            }}
           />
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {experiencesData.map((exp, idx) => {
-              const isLeft = exp.align === "left";
+          {/* CARDS */}
+          <div className="space-y-12 md:space-y-16">
+            {experiencesData.map((exp, index) => {
+              const isLeft = exp.align === "left"
               const cardPosition = isLeft
-                ? "md:mr-[calc(50%+2rem)]"
-                : "md:ml-[calc(50%+2rem)]";
+                ? "md:mr-[calc(50%+2.5rem)]"
+                : "md:ml-[calc(50%+2.5rem)]"
               const circlePosition = isLeft
-                ? "right-0 translate-x-[calc(100%+1rem+5px)]"
-                : "left-0 -translate-x-[calc(100%+1rem+6px)]";
+                ? "right-0 translate-x-[calc(100%+1.25rem)] md:block hidden"
+                : "left-0 -translate-x-[calc(100%+1.25rem)] md:block hidden"
 
               return (
-                <ExperienceCard key={idx} exp={exp} cardPosition={cardPosition} circlePosition={ circlePosition} />
-              );
+                <ExperienceCard
+                  key={index}
+                  exp={exp}
+                  cardPosition={cardPosition}
+                  circlePosition={circlePosition}
+                  index={index}
+                  totalItems={experiencesData.length}
+                  scrollProgress={smoothProgress}
+                />
+              )
             })}
-          </motion.div>
+          </div>
         </div>
-      </main>
+      </div>
     </motion.section>
-  );
+  )
 }

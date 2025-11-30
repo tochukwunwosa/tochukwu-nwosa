@@ -1,105 +1,137 @@
-'use client'
+"use client";
+import { motion, type MotionValue, useTransform } from "framer-motion";
+import type { Experience } from "@/constants/experiencesData";
 
-import { useRef } from 'react';
-import { useInView, motion } from 'framer-motion';
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
-}
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
-  }),
-}
-
-function useCardInView() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
-  return { ref, inView };
-}
-
-interface ExperienceCardProp {
-  circlePosition: string;
+interface ExperienceCardProps {
+  exp: Experience;
   cardPosition: string;
-  exp: Experience
+  circlePosition: string;
+  index: number;
+  totalItems: number;
+  scrollProgress: MotionValue<number>;
 }
-export default function ExperienceCard({ exp, circlePosition, cardPosition }: ExperienceCardProp) {
-  const { ref, inView } = useCardInView()
-  if (!exp) return null;
+
+export default function ExperienceCard({
+  exp,
+  cardPosition,
+  circlePosition,
+  index,
+  totalItems,
+  scrollProgress,
+}: ExperienceCardProps) {
+  
+  // Calculate progress for this specific dot
+  const dotThreshold = totalItems > 1 ? index / (totalItems - 1) : 0;
+
+  // Dot fills when line reaches it
+  const dotOpacity = useTransform(
+    scrollProgress,
+    [Math.max(0, dotThreshold - 0.05), dotThreshold],
+    [0.3, 1]
+  );
+
+  const dotScale = useTransform(
+    scrollProgress,
+    [Math.max(0, dotThreshold - 0.05), dotThreshold],
+    [0.85, 1]
+  );
+
+  // Type badge styling
+  const typeStyles = {
+    "full-time": "bg-foreground/5 text-foreground/80 border-foreground/20",
+    contract: "bg-foreground/5 text-foreground/80 border-foreground/20",
+    internship: "bg-foreground/5 text-foreground/80 border-foreground/20",
+  };
+
   return (
     <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={itemVariants}
-      className={`group relative bg-background backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-12 border border-foreground/30 shadow-sm transition-all duration-300 md:w-[calc(50%-2rem)] ${cardPosition} hover:shadow-md hover:shadow-foreground/10 hover:-translate-y-1 hover:border-foreground/40 hover:bg-background/90`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative pl-16 md:pl-0 ${cardPosition}`}
     >
-      {/* timeline dot */}
-      <motion.div
-        variants={fadeUp}
-        custom={1}
-        className={`absolute top-1/2 w-6 h-6 rounded-full bg-foreground/50 border-4 border-background hidden md:block transform -translate-y-1/2 group-hover:scale-110 transition-transform duration-300 ${circlePosition}`}
-      />
-
-      <div className="mb-6">
-        <motion.h3
-          variants={fadeUp}
-          custom={2}
-          className="font-title text-xl md:text-2xl font-semibold text-primary-900 mb-2"
+      {/* TIMELINE DOT - Desktop */}
+      <div className={`absolute top-8 ${circlePosition}`}>
+        <motion.div
+          style={{ scale: dotScale, opacity: dotOpacity }}
+          className="relative flex items-center justify-center"
         >
-          {exp.title}
-        </motion.h3>
-        <motion.p
-          variants={fadeUp}
-          custom={3}
-          className="font-title text-lg font-medium text-primary-600 mb-3"
-        >
-          {exp.company}
-        </motion.p>
-        <motion.p
-          variants={fadeUp}
-          custom={4}
-          className="font-sans text-sm uppercase tracking-wider font-medium text-primary-500"
-        >
-          {exp.duration.includes("Present") ? (
-            <span>
-              {exp.duration.replace("Present", "")}
-              <span className="ml-2 inline-block bg-green-200 text-green-800 text-xs px-2 py-0.5 rounded-full font-semibold">
-                Present
-              </span>
-            </span>
-          ) : (
-            exp.duration
-          )}
-        </motion.p>
+          <div className="w-3 h-3 rounded-full bg-foreground border-2 border-background shadow-sm" />
+        </motion.div>
       </div>
 
-      <ul className="space-y-4">
-        {exp.bullets.map((bullet, bulletIdx) => (
-          <motion.li
-            key={bulletIdx}
-            variants={fadeUp}
-            custom={5 + bulletIdx * 0.5}
-            className="flex items-start group"
-          >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mt-2.5 mr-3 flex-shrink-0"></span>
-            <p className="font-sans text-base text-primary-700 leading-relaxed font-normal">
-              {bullet}
-            </p>
-          </motion.li>
-        ))}
-      </ul>
+      {/* TIMELINE DOT - Mobile */}
+      <div className="absolute left-8 top-8 -translate-x-1/2 md:hidden">
+        <motion.div
+          style={{ scale: dotScale, opacity: dotOpacity }}
+          className="w-2.5 h-2.5 rounded-full bg-foreground border-2 border-background"
+        />
+      </div>
+
+      {/* CARD */}
+      <div className="group relative">
+        <div
+          className="relative bg-card border border-foreground/10 rounded-lg p-6 md:p-8 hover:border-foreground/20 transition-all duration-200 hover:shadow-sm"
+        >
+          {/* HEADER */}
+          <div className="mb-4">
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg md:text-xl font-semibold mb-1">
+                  {exp.title}
+                </h3>
+                <p className="text-base md:text-lg font-medium text-foreground/80">
+                  {exp.company}
+                </p>
+              </div>
+
+              {/* TYPE BADGE */}
+              <span
+                className={`px-2.5 py-0.5 text-xs font-medium rounded border ${typeStyles[exp.type]} uppercase tracking-wide`}
+              >
+                {exp.type}
+              </span>
+            </div>
+
+            {/* LOCATION & DATE */}
+            <div className="flex flex-wrap gap-2 text-sm text-foreground/60 mt-1">
+              <span>{exp.location}</span>
+              <span className="text-foreground/30">•</span>
+              <span>{exp.duration}</span>
+            </div>
+          </div>
+
+          {/* BULLETS */}
+          <ul className="space-y-2 mb-4">
+            {exp.bullets.map((bullet, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2.5 text-sm leading-relaxed"
+              >
+                <span className="text-foreground/50 mt-0.5 flex-shrink-0">
+                  •
+                </span>
+                <span className="text-foreground/80">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* TECHNOLOGIES */}
+          {exp.technologies && exp.technologies.length > 0 && (
+            <div className="pt-3 border-t border-foreground/5 flex flex-wrap gap-1.5">
+              {exp.technologies.map((tech, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-0.5 text-xs font-medium bg-foreground/5 text-foreground/70 rounded border border-foreground/10"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </motion.div>
-  )
+  );
 }
