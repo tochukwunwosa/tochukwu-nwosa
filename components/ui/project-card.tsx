@@ -136,6 +136,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveDemoLink}
               target="_blank"
               rel="noopener noreferrer"
+              data-umami-event={`project:open:${project.title}`}
               className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors group/link"
             >
               <svg className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,6 +150,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event={`project:github:${project.title}`}
                 className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors group/link"
               >
                 <svg className="w-4 h-4 transition-transform group-hover/link:scale-110" fill="currentColor" viewBox="0 0 24 24">

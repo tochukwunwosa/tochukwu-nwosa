@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Mail, MapPin, Github, Linkedin, ArrowDown } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import ResumeDownload from "@/components/resume-downlaod"
+import { track } from "@/lib/analytics"
 
 
 const containerVariants = {
@@ -138,7 +139,9 @@ export default function HeroSection() {
               <motion.a
                 ref={mailRef}
                 href="mailto:tochukwunwosa28@gmail.com"
-                data-umami-event='email-envelope-clicked'
+                onClick={() =>
+                  track("contact:email:clicked", { source: "email-envelope-icon-hero-section" })
+                }
                 className="px-8 py-3.5 bg-foreground text-background rounded-lg font-semibold shadow-lg shadow-foreground/30 hover:shadow-xl hover:shadow-foreground/40 transition-all flex items-center gap-2"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
@@ -191,7 +194,9 @@ export default function HeroSection() {
                 >
                   <motion.a
                     href="mailto:tochukwunwosa28@gmail.com"
-                    data-umami-event='email-text-clicked'
+                    onClick={() =>
+                      track("contact:email:clicked", { source: "about-card-hero-section" })
+                    }
                     className="group flex items-center gap-2 hover:text-primary transition-colors"
                     whileHover={{ x: 5 }}
                     variants={itemVariants}
@@ -199,8 +204,11 @@ export default function HeroSection() {
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                       <Mail size={16} className="text-primary" />
                     </div>
-                    <span className="group-hover:underline">tochukwunwosa28@gmail.com</span>
+                    <span className="group-hover:underline">
+                      tochukwunwosa28@gmail.com
+                    </span>
                   </motion.a>
+
 
                   <motion.div
                     className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors cursor-default"

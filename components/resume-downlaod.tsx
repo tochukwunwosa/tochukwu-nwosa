@@ -1,4 +1,5 @@
 "use client"
+import { track } from "@/lib/analytics"
 import { motion } from "framer-motion"
 import { Download } from "lucide-react"
 
@@ -6,11 +7,14 @@ export default function ResumeDownload() {
   const handleDownload = () => {
     // link element
     const link = document.createElement("a")
-    link.href = "/doc/Tochukwu_Nwosa_Frontend_Engineer_CV.pdf" 
+    link.href = "/doc/Tochukwu_Nwosa_Frontend_Engineer_CV.pdf"
     link.download = "Tochukwu-Nwosa-Resume.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
+    track("resume--download", {
+      source: "hero-section",
+    })
   }
 
   return (
