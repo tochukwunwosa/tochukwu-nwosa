@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
+import { track } from '@/lib/analytics'
 
 interface NavLink {
   name: string;
@@ -131,6 +132,9 @@ export default function Footer() {
                       href={social.route}
                       target={social.route.startsWith('http') ? "_blank" : undefined}
                       rel={social.route.startsWith('http') ? "noopener noreferrer" : undefined}
+                      onClick={() =>
+                        track(`${social.name}:clicked`, { source: 'footer' })
+                      }
                       className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors group"
                     >
                       <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />

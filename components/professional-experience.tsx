@@ -83,8 +83,8 @@ export default function ProfessionalExperience() {
                 ? "md:mr-[calc(50%+2.5rem)]"
                 : "md:ml-[calc(50%+2.5rem)]"
               const circlePosition = isLeft
-                ? "right-0 translate-x-[calc(100%+1.25rem)] md:block hidden"
-                : "left-0 -translate-x-[calc(100%+1.25rem)] md:block hidden"
+                ? "right-0 translate-x-[calc(100%+2rem)] md:block hidden"
+                : "left-0 -translate-x-[calc(100%+2.25rem)] md:block hidden"
 
               return (
                 <ExperienceCard

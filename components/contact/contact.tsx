@@ -128,7 +128,7 @@ export default function Contact() {
           <motion.div
             variants={fadeUp}
             custom={4}
-            className="lg:col-span-3"
+            className="lg:col-span-3 h-full"
           >
             <ContactForm />
           </motion.div>

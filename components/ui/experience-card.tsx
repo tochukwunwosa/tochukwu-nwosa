@@ -26,15 +26,16 @@ export default function ExperienceCard({
   // Dot fills when line reaches it
   const dotOpacity = useTransform(
     scrollProgress,
-    [Math.max(0, dotThreshold - 0.05), dotThreshold],
+    [0, dotThreshold],
     [0.3, 1]
   );
 
   const dotScale = useTransform(
     scrollProgress,
-    [Math.max(0, dotThreshold - 0.05), dotThreshold],
+    [0, dotThreshold],
     [0.85, 1]
   );
+
 
   // Type badge styling
   const typeStyles = {

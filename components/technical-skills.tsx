@@ -160,7 +160,7 @@ export default function TechnicalSkills() {
         {/* CORE SKILLS */}
         <motion.div variants={fadeUp} custom={3} className="mb-16">
           <h3 className="text-2xl font-semibold mb-8 text-center">Core Technologies</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {CORE_SKILLS.map((skill, idx) => {
               const Icon = skill.icon;
               return (
@@ -170,7 +170,7 @@ export default function TechnicalSkills() {
                   custom={idx + 4}
                   className="group relative bg-card border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-all duration-200 hover:shadow-sm"
                 >
-                  <div className="flex items-start gap-4 mb-4">
+                  <div className="md:flex items-start gap-4 mb-4">
                     <div className="p-3 bg-foreground/5 rounded-lg">
                       <Icon className="w-8 h-8 text-foreground" />
                     </div>

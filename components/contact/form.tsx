@@ -111,9 +111,10 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
+          className="h-full"
         >
           <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-8 border border-foreground/10 rounded-lg bg-card shadow-sm">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-8 border border-foreground/10 rounded-lg bg-card shadow-sm h-full">
 
               <div className="space-y-4">
                 {/* Name */}
