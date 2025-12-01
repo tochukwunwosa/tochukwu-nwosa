@@ -77,7 +77,7 @@ export default function HeroSection() {
           transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className=" max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* HERO HEADER */}
           <div className="text-center space-y-8 mb-16">
             <motion.div variants={itemVariants} className="space-y-2">

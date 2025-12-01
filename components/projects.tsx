@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { projectsData } from '@/constants/projectsData'
+import { projectsData } from '@/constants'
 import ProjectCard from '@/components/ui/project-card';
 import Link from 'next/link';
 

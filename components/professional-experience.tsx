@@ -1,7 +1,7 @@
 "use client"
 import { useRef } from "react"
 import { motion, useScroll, useSpring, useInView } from "framer-motion"
-import { experiencesData } from "@/constants/experiencesData"
+import { experiencesData } from "@/constants"
 import ExperienceCard from "@/components/ui/experience-card"
 
 const fadeUp = {

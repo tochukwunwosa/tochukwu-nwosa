@@ -3,8 +3,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
+import { Mail, Github, Linkedin, MapPin, ArrowUp } from 'lucide-react'
 import { track } from '@/lib/analytics'
+import { scrollToTop } from '@/lib/utils'
 
 interface NavLink {
   name: string;
@@ -85,7 +86,7 @@ export default function Footer() {
             <motion.div
               variants={fadeUp}
               custom={2}
-              className="md:col-span-3 md:place-items-center space-y-4"
+              className="md:col-span-3 place-items-center space-y-4"
             >
               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                 Quick Links
@@ -101,6 +102,7 @@ export default function Footer() {
                   >
                     <Link
                       href={link.route}
+                      onClick={() => track(`nav:${link.name.toLowerCase()}`, { source: 'footer' })}
                       className="text-sm text-foreground/60 hover:text-foreground transition-colors inline-block hover:translate-x-1 duration-200"
                     >
                       {link.name}
@@ -114,7 +116,7 @@ export default function Footer() {
             <motion.div
               variants={fadeUp}
               custom={3}
-              className="md:col-span-4 md:place-items-center space-y-4"
+              className="md:col-span-4 place-items-center space-y-4"
             >
               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                 Connect
@@ -132,9 +134,7 @@ export default function Footer() {
                       href={social.route}
                       target={social.route.startsWith('http') ? "_blank" : undefined}
                       rel={social.route.startsWith('http') ? "noopener noreferrer" : undefined}
-                      onClick={() =>
-                        track(`${social.name}:clicked`, { source: 'footer' })
-                      }
+                      onClick={() => track(`${social.name.toLowerCase()}:clicked`, { source: 'footer' })}
                       className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors group"
                     >
                       <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -146,11 +146,30 @@ export default function Footer() {
             </motion.div>
           </div>
 
-          {/* BOTTOM: COPYRIGHT */}
+          {/* BACK TO TOP BUTTON */}
           <motion.div
             variants={fadeUp}
             custom={4}
-            className="mt-12 pt-8 border-t border-foreground/10"
+            className="mt-8 flex justify-center"
+          >
+            <button
+              onClick={() => {
+                scrollToTop();
+                track('back-to-top:clicked', { source: 'footer' });
+              }}
+              className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors group"
+              aria-label="Scroll to top"
+            >
+              <span>Back to Top</span>
+              <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </motion.div>
+
+          {/* BOTTOM: COPYRIGHT */}
+          <motion.div
+            variants={fadeUp}
+            custom={5}
+            className="mt-8 pt-8 border-t border-foreground/10"
           >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
               <p>
