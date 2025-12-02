@@ -86,7 +86,7 @@ export default function Footer() {
             <motion.div
               variants={fadeUp}
               custom={2}
-              className="md:col-span-3 place-items-center space-y-4"
+              className="md:col-span-3 lg:place-items-center space-y-4"
             >
               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                 Quick Links
@@ -116,7 +116,7 @@ export default function Footer() {
             <motion.div
               variants={fadeUp}
               custom={3}
-              className="md:col-span-4 place-items-center space-y-4"
+              className="md:col-span-4 lg:place-items-center space-y-4"
             >
               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                 Connect

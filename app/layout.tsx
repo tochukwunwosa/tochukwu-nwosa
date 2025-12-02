@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://tochukwu-nwosa.vercel.app"),
   openGraph: {
-    title: "ochukwu Nwosa - Frontend Engineer | React, Next.js, TypeScript",
+    title: "Tochukwu Nwosa - Frontend Engineer | React, Next.js, TypeScript",
     description:
       "Building fast, scalable web applications. 40% performance gains, 30% engagement increase.",
     url: "https://tochukwu-nwosa.vercel.app",
