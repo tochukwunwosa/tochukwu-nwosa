@@ -56,89 +56,91 @@ export default function NavBar() {
   }, [activeSection])
 
   return (
-    <div className={`w-full z-50 sticky top-0 transition-all duration-300 ${isScrolled
+    <>
+      <div className={`w-full z-50 sticky top-0 transition-all duration-300 ${isScrolled
         ? 'bg-background/95 backdrop-blur-sm shadow-sm border-b border-foreground/5'
-      : 'bg-background border-b border-foreground/0'
-      }`}>
-      <motion.nav
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-        className='relative w-full max-w-6xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between'
-      >
-
-        {/* LEFT: THEME TOGGLE */}
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+        : 'bg-background border-b border-foreground/0'
+        }`}>
+        <motion.nav
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+          className='relative w-full max-w-6xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between'
         >
-          <ModeToggle />
-        </motion.div>
 
-        {/* CENTER: DESKTOP NAV */}
-        <ul className='hidden lg:flex items-center space-x-8'>
-          {navItems.map((item) => {
-            const isActive = activeSection === item.route
+          {/* LEFT: THEME TOGGLE */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ModeToggle />
+          </motion.div>
 
-            return (
-              <motion.li
-                key={item.route}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href={item.route}
-                  onClick={() => track(`nav:${item.name.toLowerCase()}`, { source: 'navbar' })}
-                  className={`text-sm font-medium transition-colors relative ${isActive
+          {/* CENTER: DESKTOP NAV */}
+          <ul className='hidden lg:flex items-center space-x-8'>
+            {navItems.map((item) => {
+              const isActive = activeSection === item.route
+
+              return (
+                <motion.li
+                  key={item.route}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    href={item.route}
+                    onClick={() => track(`nav:${item.name.toLowerCase()}`, { source: 'navbar' })}
+                    className={`text-sm font-medium transition-colors relative ${isActive
                       ? 'text-foreground'
                       : 'text-foreground/60 hover:text-foreground'
-                    }`}
-                  aria-label={`Navigate to ${item.name}`}
-                >
-                  {item.name}
+                      }`}
+                    aria-label={`Navigate to ${item.name}`}
+                  >
+                    {item.name}
 
-                  {/* Active indicator */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-foreground"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              </motion.li>
-            )
-          })}
-        </ul>
+                    {/* Active indicator */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-foreground"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </motion.li>
+              )
+            })}
+          </ul>
 
-        {/* RIGHT: EMAIL (Desktop) / MENU (Mobile) */}
-        <div className="flex items-center gap-4">
-          {/* Email - Hidden on mobile */}
-          <motion.a
-            href="mailto:tochukwunwosa28@gmail.com"
-            whileHover={{ scale: 1.05 }}
-            className="md:block text-sm font-medium text-foreground/60 hover:text-foreground transition-colors"
-            aria-label="Email Tochukwu"
-            onClick={() => track('email:clicked', { source: 'navbar' })}
-          >
-            Get in touch
-          </motion.a>
+          {/* RIGHT: EMAIL (Desktop) / MENU (Mobile) */}
+          <div className="flex items-center gap-4">
+            {/* Email - Hidden on mobile */}
+            <motion.a
+              href="mailto:tochukwunwosa28@gmail.com"
+              whileHover={{ scale: 1.05 }}
+              className="md:block text-sm font-medium text-foreground/60 hover:text-foreground transition-colors"
+              aria-label="Email Tochukwu"
+              onClick={() => track('email:clicked', { source: 'navbar' })}
+            >
+              Get in touch
+            </motion.a>
 
-          {/* Mobile menu button */}
-          <motion.button
-            onClick={() => {
-              setOpenMenu(true)
-              track('mobile-menu:opened', { source: 'navbar' })
-            }}
-            aria-label="Open navigation menu"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-foreground/20 hover:border-foreground/40 transition-colors"
-          >
-            <Menu className="w-5 h-5" />
-          </motion.button>
-        </div>
-      </motion.nav>
+            {/* Mobile menu button */}
+            <motion.button
+              onClick={() => {
+                setOpenMenu(true)
+                track('mobile-menu:opened', { source: 'navbar' })
+              }}
+              aria-label="Open navigation menu"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-foreground/20 hover:border-foreground/40 transition-colors"
+            >
+              <Menu className="w-5 h-5" />
+            </motion.button>
+          </div>
+        </motion.nav>
+      </div>
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
@@ -150,6 +152,6 @@ export default function NavBar() {
           />
         )}
       </AnimatePresence>
-    </div>
+    </>
   )
 }

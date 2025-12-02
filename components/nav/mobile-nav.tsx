@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { track } from "@/lib/analytics"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { navItems, socialLinks } from "@/constants"
 import { Mail, MapPin, X } from "lucide-react"
 
@@ -15,52 +15,26 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ openMenu, setOpenMenu, activeSection }: MobileNavProps) {
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setOpenMenu(false)
     track('mobile-menu:closed', { source: 'mobile-nav' })
-  }
-
-  const handleLinkClick = (name: string) => {
-    track(`nav:${name.toLowerCase()}`, { source: 'mobile-menu' })
-    closeMenu()
-  }
+  }, [setOpenMenu])
 
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (openMenu) {
-      const scrollY = window.scrollY
-
-      // Lock body scroll
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-
-      document.documentElement.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";        // Prevent scroll
+      document.documentElement.style.overflow = "hidden";
     } else {
-      const scrollY = document.body.style.top
-
-      // Unlock body scroll
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-
-      document.documentElement.style.overflow = ''
-
-      // Restore scroll position
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
 
     return () => {
-      // Cleanup on unmount
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-    }
-  }, [openMenu])
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [openMenu]);
 
   // Close on Escape key
   useEffect(() => {
@@ -74,10 +48,21 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
     }
   }, [openMenu, closeMenu])
 
-  // Prevent touch scroll on backdrop (iOS fix)
+  // Prevent touch scroll on backdrop 
   const handleTouchMove = (e: React.TouchEvent) => {
     e.preventDefault()
   }
+
+  const openMobileMenu = (e: React.MouseEvent, route: string, name: string) => {
+    e.preventDefault();
+    const target = document.querySelector(route);
+    if (target) {
+      (target as HTMLElement).scrollIntoView({ behavior: "smooth" });
+      track(`nav:${name.toLowerCase()}`, { source: 'mobile-menu' })
+    }
+    closeMenu();
+  }
+
 
   return (
     <>
@@ -131,7 +116,7 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
                 >
                   <Link
                     href={item.route}
-                    onClick={() => handleLinkClick(item.name)}
+                    onClick={(e) => openMobileMenu(e, item.route, item.name)}
                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
                       ? 'bg-foreground/10 text-foreground'
                       : 'text-foreground/70 hover:bg-foreground/5 hover:text-foreground hover:translate-x-1'
