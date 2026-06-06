@@ -64,7 +64,7 @@ export default function Projects() {
         <motion.div
           variants={fadeUp}
           custom={4}
-          className="text-center mt-16 md:mt-20 pt-12 border-t border-foreground/5"
+          className="text-center mt-16 md:mt-20 pb-12 border-b border-foreground/5"
         >
           <p className="text-base md:text-lg text-foreground/70 mb-6">
             Want to see more? Check out my other work on GitHub.

@@ -6,8 +6,8 @@ import NavBar from '@/components/nav/nav-bar';
 import Footer from '@/components/footer';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { AnimatePresence } from 'framer-motion';
-import Script from 'next/script';
 import './globals.css';
+import Script from 'next/script';
 
 export default function RootLayoutClient({
   children,

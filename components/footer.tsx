@@ -71,9 +71,10 @@ export default function Footer() {
               <h3 className="text-2xl font-bold text-foreground">
                 Tochukwu Nwosa
               </h3>
+              {/* CHANGED: "Frontend Engineer" → "Fullstack Engineer", bio now mentions full stack */}
               <p className="text-sm text-foreground/70 max-w-md leading-relaxed">
-                Frontend Engineer building fast, scalable web applications.
-                Specialized in performance optimization with proven results:
+                Fullstack Engineer building and shipping production web software.
+                React and Next.js on the frontend. Node.js, NestJS, and MongoDB on the backend.
                 40% faster load times, 98+ PageSpeed scores.
               </p>
               <div className="flex items-center gap-2 text-sm text-foreground/60 pt-2">
@@ -82,7 +83,7 @@ export default function Footer() {
               </div>
             </motion.div>
 
-            {/* MIDDLE: QUICK LINKS */}
+            {/* MIDDLE: QUICK LINKS — unchanged */}
             <motion.div
               variants={fadeUp}
               custom={2}
@@ -112,7 +113,7 @@ export default function Footer() {
               </ul>
             </motion.div>
 
-            {/* RIGHT: CONNECT */}
+            {/* RIGHT: CONNECT — unchanged */}
             <motion.div
               variants={fadeUp}
               custom={3}
@@ -146,7 +147,7 @@ export default function Footer() {
             </motion.div>
           </div>
 
-          {/* BACK TO TOP BUTTON */}
+          {/* BACK TO TOP BUTTON — unchanged */}
           <motion.div
             variants={fadeUp}
             custom={4}
@@ -165,7 +166,7 @@ export default function Footer() {
             </button>
           </motion.div>
 
-          {/* BOTTOM: COPYRIGHT */}
+          {/* BOTTOM: COPYRIGHT — unchanged */}
           <motion.div
             variants={fadeUp}
             custom={5}

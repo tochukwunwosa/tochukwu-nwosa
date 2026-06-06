@@ -12,10 +12,11 @@ import {
   SiTailwindcss,
   SiMongodb,
   SiSupabase,
+  SiNestjs,
+  SiCypress,
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
-// Core expertise
 interface CoreSkill {
   name: string;
   icon: IconType;
@@ -24,6 +25,8 @@ interface CoreSkill {
   keyAchievement: string;
 }
 
+// CHANGED: Node.js promoted to core, Tailwind moved to supporting
+// Order now reads: frontend → backend → language → styling
 const CORE_SKILLS: CoreSkill[] = [
   {
     name: 'React',
@@ -40,47 +43,56 @@ const CORE_SKILLS: CoreSkill[] = [
     keyAchievement: '98+ PageSpeed scores'
   },
   {
+    name: 'Node.js',
+    icon: FaNodeJs,
+    level: 'proficient',
+    yearsOfExperience: '2+ years',
+    keyAchievement: 'REST APIs & business logic'
+  },
+  {
     name: 'TypeScript',
     icon: SiTypescript,
     level: 'expert',
     yearsOfExperience: '2+ years',
-    keyAchievement: 'Type-safe architecture'
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: SiTailwindcss,
-    level: 'expert',
-    yearsOfExperience: '2+ years',
-    keyAchievement: 'Responsive design systems'
+    keyAchievement: 'Type-safe across the stack'
   },
 ];
 
-// Supporting skills
 interface SupportingSkill {
   name: string;
   icon: IconType;
   context: string;
 }
 
+// CHANGED: NestJS added, Tailwind moved here, Cypress added
 const SUPPORTING_SKILLS: SupportingSkill[] = [
   {
-    name: 'Node.js',
-    icon: FaNodeJs,
-    context: 'API integration & backend communication'
+    name: 'NestJS',
+    icon: SiNestjs,
+    context: 'API architecture & business workflows'
   },
   {
     name: 'MongoDB',
     icon: SiMongodb,
-    context: 'Database design for LMS platform'
+    context: 'Schema design, queries, aggregation'
   },
   {
     name: 'Supabase',
     icon: SiSupabase,
     context: 'Real-time features & authentication'
   },
+  {
+    name: 'Tailwind CSS',
+    icon: SiTailwindcss,
+    context: 'Responsive design systems, mobile-first'
+  },
+  {
+    name: 'Cypress',
+    icon: SiCypress,
+    context: 'E2E testing & CI/CD pipelines'
+  },
 ];
 
-// Specialized competencies
 interface Competency {
   title: string;
   description: string;
@@ -88,30 +100,31 @@ interface Competency {
   proof: string;
 }
 
+// CHANGED: first competency now leads with fullstack, not just performance
 const COMPETENCIES: Competency[] = [
   {
+    title: 'Fullstack Product Development',
+    description: 'Building and shipping complete products — frontend UI, REST APIs, database schema, auth systems, and deployment pipelines',
+    icon: '🛠️',
+    proof: 'MyTreda: 80+ businesses, 1,400+ products, built solo end-to-end'
+  },
+  {
     title: 'Performance Optimization',
-    description: 'Expert in Core Web Vitals, code-splitting, lazy loading, and bundle optimization',
+    description: 'Core Web Vitals, code-splitting, lazy loading, and bundle optimization across frontend and backend',
     icon: '⚡',
-    proof: '40% faster load times, 98+ PageSpeed scores'
+    proof: '40% faster load times, 98+ PageSpeed scores across 10+ projects'
   },
   {
-    title: 'Responsive Design',
-    description: 'Mobile-first development with pixel-perfect implementation across all devices',
-    icon: '📱',
-    proof: 'WCAG accessibility standards, cross-browser compatibility'
-  },
-  {
-    title: 'State Management',
-    description: 'Redux, Zustand, React Query for complex application state',
+    title: 'State Management & Data',
+    description: 'Redux, Zustand, React Query on the frontend — MongoDB and Supabase on the backend',
     icon: '🔄',
-    proof: 'Scalable architecture for 500+ daily users'
+    proof: 'Scalable architecture serving 500+ daily users'
   },
   {
     title: 'Testing & CI/CD',
-    description: 'Cypress end-to-end testing, automated deployment pipelines',
+    description: 'Cypress end-to-end testing suites and automated deployment pipelines',
     icon: '✅',
-    proof: 'Stable releases, maintained code quality'
+    proof: '2–3 production releases weekly during active development'
   },
 ];
 
@@ -139,21 +152,21 @@ export default function TechnicalSkills() {
     >
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* HEADER */}
+        {/* HEADER — CHANGED: removed "frontend-focused" framing */}
         <div className="text-center mb-16 md:mb-20">
           <motion.h2
             variants={fadeUp}
             custom={1}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Technical Expertise
+            Technical Skills
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
             className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
           >
-            Specialized in performance-focused frontend development with proven results
+            Frontend to backend — building complete products with the full stack
           </motion.p>
         </div>
 
@@ -221,9 +234,9 @@ export default function TechnicalSkills() {
           </div>
         </motion.div>
 
-        {/* SUPPORTING SKILLS */}
+        {/* SUPPORTING SKILLS — CHANGED: now 5 items in a 2+3 grid */}
         <motion.div variants={fadeUp} custom={13}>
-          <h3 className="text-2xl font-semibold mb-8 text-center">Additional Technologies</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center">Also Working With</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {SUPPORTING_SKILLS.map((skill, idx) => {
               const Icon = skill.icon;
@@ -246,6 +259,7 @@ export default function TechnicalSkills() {
             })}
           </div>
         </motion.div>
+
       </div>
     </motion.section>
   );

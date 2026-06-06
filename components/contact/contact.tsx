@@ -39,12 +39,13 @@ export default function Contact() {
           >
             Let&apos;s Work Together
           </motion.h2>
+          {/* CHANGED: removed "frontend" from the subtext */}
           <motion.p
             variants={fadeUp}
             custom={2}
             className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
           >
-            Open to remote frontend engineering roles and select freelance projects.
+            Open to remote fullstack engineering roles and select freelance projects.
             Currently employed but exploring new opportunities.
           </motion.p>
         </div>
@@ -60,27 +61,28 @@ export default function Contact() {
             {/* What I'm Looking For */}
             <div>
               <h3 className="text-xl font-semibold mb-4">What I&apos;m Looking For</h3>
+              {/* CHANGED: all four bullets updated for fullstack positioning */}
               <ul className="space-y-3 text-sm text-foreground/70">
                 <li className="flex items-start gap-2">
                   <span className="text-foreground mt-0.5">✓</span>
-                  <span>Full-time remote frontend engineering roles</span>
+                  <span>Full-time remote fullstack engineering roles</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-foreground mt-0.5">✓</span>
-                  <span>Contract opportunities (20+ hours/week)</span>
+                  <span>Teams building real products with real users</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-foreground mt-0.5">✓</span>
-                  <span>High-impact projects at growing startups</span>
+                  <span>Node.js + React/Next.js stacks</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-foreground mt-0.5">✓</span>
-                  <span>Performance optimization consulting</span>
+                  <span>Companies that care about code quality and performance</span>
                 </li>
               </ul>
             </div>
 
-            {/* Direct Contact */}
+            {/* Direct Contact — unchanged */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Direct Contact</h3>
               <div className="space-y-3">
@@ -91,7 +93,6 @@ export default function Contact() {
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span className="group-hover:underline">tochukwunwosa28@gmail.com</span>
                 </Link>
-
 
                 <Link href="https://linkedin.com/in/nwosa-tochukwu"
                   target="_blank"
@@ -114,7 +115,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Availability */}
+            {/* Availability — unchanged */}
             <div className="bg-foreground/5 border border-foreground/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2 text-sm">Current Availability</h3>
               <p className="text-sm text-foreground/70">
@@ -124,7 +125,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* RIGHT: CONTACT FORM */}
+          {/* RIGHT: CONTACT FORM — unchanged */}
           <motion.div
             variants={fadeUp}
             custom={4}
@@ -132,8 +133,8 @@ export default function Contact() {
           >
             <ContactForm />
           </motion.div>
-        </div >
-      </div >
-    </motion.section >
+        </div>
+      </div>
+    </motion.section>
   )
 }
