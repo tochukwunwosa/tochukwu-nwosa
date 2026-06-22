@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { Menu } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import ModeToggle from '../theme/theme-toggle'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { track } from '@/lib/analytics'
 import MobileNav from './mobile-nav'
 import { navItems } from '@/constants'
@@ -14,6 +14,7 @@ export default function NavBar() {
   const [openMenu, setOpenMenu] = useState(false)
   const [activeSection, setActiveSection] = useState<string>("")
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   // Track scroll position for navbar style
   useEffect(() => {
@@ -27,9 +28,11 @@ export default function NavBar() {
 
   // Track active section based on scroll position
   useEffect(() => {
-    const sections: (HTMLElement | null)[] = navItems.map((item) =>
-      document.querySelector<HTMLElement>(item.route)
-    )
+    const sections: (HTMLElement | null)[] = navItems.map((item) => {
+      if (item.isPage) return null
+      const id = item.route.split('/#')[1]
+      return id ? document.getElementById(id) : null
+    })
 
     const handleScroll = () => {
       let current = ""
@@ -68,18 +71,23 @@ export default function NavBar() {
           className='relative w-full max-w-6xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between'
         >
 
-          {/* LEFT: THEME TOGGLE */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ModeToggle />
+          {/* LEFT: BRAND MARK */}
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href="#about"
+              aria-label="Back to top"
+              className="flex items-center justify-center w-10 h-10 rounded-lg border border-foreground/20 hover:border-foreground/40 bg-background hover:bg-foreground/5 transition-colors font-bold text-sm tracking-tight"
+            >
+              TN
+            </Link>
           </motion.div>
 
           {/* CENTER: DESKTOP NAV */}
           <ul className='hidden lg:flex items-center space-x-8'>
             {navItems.map((item) => {
-              const isActive = activeSection === item.route
+              const isActive = item.isPage
+                ? pathname?.startsWith(item.route)
+                : activeSection === item.route
 
               return (
                 <motion.li

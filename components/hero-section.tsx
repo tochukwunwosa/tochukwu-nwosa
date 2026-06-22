@@ -25,7 +25,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
@@ -35,7 +35,7 @@ const floatingVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
 };
 
@@ -44,7 +44,7 @@ const slideUpVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: "easeOut" as const },
   },
 };
 

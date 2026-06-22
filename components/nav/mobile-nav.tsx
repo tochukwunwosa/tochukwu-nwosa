@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { track } from "@/lib/analytics"
 import { useCallback, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { navItems, socialLinks } from "@/constants"
 import { Mail, MapPin, X } from "lucide-react"
 
@@ -15,6 +16,7 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ openMenu, setOpenMenu, activeSection }: MobileNavProps) {
+  const pathname = usePathname()
   const closeMenu = useCallback(() => {
     setOpenMenu(false)
     track('mobile-menu:closed', { source: 'mobile-nav' })
@@ -53,14 +55,19 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
     e.preventDefault()
   }
 
-  const openMobileMenu = (e: React.MouseEvent, route: string, name: string) => {
-    e.preventDefault();
-    const target = document.querySelector(route);
-    if (target) {
-      (target as HTMLElement).scrollIntoView({ behavior: "smooth" });
-      track(`nav:${name.toLowerCase()}`, { source: 'mobile-menu' })
+  const openMobileMenu = (e: React.MouseEvent, route: string, name: string, isPage?: boolean) => {
+    track(`nav:${name.toLowerCase()}`, { source: 'mobile-menu' })
+    if (isPage) {
+      closeMenu()
+      return
     }
-    closeMenu();
+    const id = route.split('#')[1]
+    const target = id ? document.getElementById(id) : null
+    if (target) {
+      e.preventDefault()
+      target.scrollIntoView({ behavior: "smooth" })
+    }
+    closeMenu()
   }
 
 
@@ -105,7 +112,9 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
         <div className="flex-1 overflow-y-auto overscroll-contain p-6">
           <ul className="space-y-2">
             {navItems.map((item, index) => {
-              const isActive = activeSection === item.route
+              const isActive = item.isPage
+                ? pathname?.startsWith(item.route)
+                : activeSection === item.route
 
               return (
                 <motion.li
@@ -116,7 +125,7 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
                 >
                   <Link
                     href={item.route}
-                    onClick={(e) => openMobileMenu(e, item.route, item.name)}
+                    onClick={(e) => openMobileMenu(e, item.route, item.name, item.isPage)}
                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
                       ? 'bg-foreground/10 text-foreground'
                       : 'text-foreground/70 hover:bg-foreground/5 hover:text-foreground hover:translate-x-1'

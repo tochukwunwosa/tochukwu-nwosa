@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { usePathname } from 'next/navigation';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import NavBar from '@/components/nav/nav-bar';
 import Footer from '@/components/footer';
@@ -14,8 +15,11 @@ export default function RootLayoutClient({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isStudio = pathname?.startsWith('/studio');
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <Script
           async
@@ -32,11 +36,11 @@ export default function RootLayoutClient({
           disableTransitionOnChange
         >
           <ErrorBoundary>
-            <NavBar />
+            {!isStudio && <NavBar />}
             <AnimatePresence>
               {children}
             </AnimatePresence>
-            <Footer />
+            {!isStudio && <Footer />}
           </ErrorBoundary>
         </ThemeProvider>
       </body>

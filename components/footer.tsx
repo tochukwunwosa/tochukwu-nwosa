@@ -1,54 +1,47 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Mail, Github, Linkedin, MapPin, ArrowUp } from 'lucide-react'
-import { track } from '@/lib/analytics'
-import { scrollToTop } from '@/lib/utils'
-
-interface NavLink {
-  name: string;
-  route: string;
-}
-
-const navLinks: NavLink[] = [
-  { name: 'About', route: '#about' },
-  { name: 'Projects', route: '#project' },
-  { name: 'Skills', route: '#skill' },
-  { name: 'Experience', route: '#experience' },
-  { name: 'Contact', route: '#contact' },
-]
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Mail, Github, Linkedin, MapPin, ArrowUp } from "lucide-react";
+import { track } from "@/lib/analytics";
+import { scrollToTop } from "@/lib/utils";
+import ThemeSegmentedToggle from "@/components/theme/theme-segmented-toggle";
+import { navItems } from "@/constants";
 
 const socials = [
   {
-    name: 'GitHub',
-    route: 'https://github.com/tochukwunwosa',
-    icon: Github
+    name: "GitHub",
+    route: "https://github.com/tochukwunwosa",
+    icon: Github,
   },
   {
-    name: 'LinkedIn',
-    route: 'https://linkedin.com/in/nwosa-tochukwu',
-    icon: Linkedin
+    name: "LinkedIn",
+    route: "https://linkedin.com/in/nwosa-tochukwu",
+    icon: Linkedin,
   },
   {
-    name: 'Email',
-    route: 'mailto:tochukwunwosa28@gmail.com',
-    icon: Mail
+    name: "Email",
+    route: "mailto:tochukwunwosa28@gmail.com",
+    icon: Mail,
   },
-]
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }
-  })
-}
+    transition: {
+      delay: i * 0.1,
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
 
 export default function Footer() {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
   return (
     <motion.footer
@@ -58,10 +51,9 @@ export default function Footer() {
       id="footer"
       className="mt-auto w-full bg-background border-t border-foreground/10"
     >
-      <div className='relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-
             {/* LEFT: BRAND & BIO */}
             <motion.div
               variants={fadeUp}
@@ -73,9 +65,10 @@ export default function Footer() {
               </h3>
               {/* CHANGED: "Frontend Engineer" → "Fullstack Engineer", bio now mentions full stack */}
               <p className="text-sm text-foreground/70 max-w-md leading-relaxed">
-                Fullstack Engineer building and shipping production web software.
-                React and Next.js on the frontend. Node.js, NestJS, and MongoDB on the backend.
-                40% faster load times, 98+ PageSpeed scores.
+                Fullstack Engineer building and shipping production web
+                software. React and Next.js on the frontend. Node.js, NestJS,
+                and MongoDB on the backend. 40% faster load times, 98+ PageSpeed
+                scores.
               </p>
               <div className="flex items-center gap-2 text-sm text-foreground/60 pt-2">
                 <MapPin className="w-4 h-4" />
@@ -93,7 +86,7 @@ export default function Footer() {
                 Quick Links
               </h4>
               <ul className="space-y-2">
-                {navLinks.map((link, index) => (
+                {navItems.map((link, index) => (
                   <motion.li
                     key={link.route}
                     initial={{ opacity: 0, x: -10 }}
@@ -103,7 +96,11 @@ export default function Footer() {
                   >
                     <Link
                       href={link.route}
-                      onClick={() => track(`nav:${link.name.toLowerCase()}`, { source: 'footer' })}
+                      onClick={() =>
+                        track(`nav:${link.name.toLowerCase()}`, {
+                          source: "footer",
+                        })
+                      }
                       className="text-sm text-foreground/60 hover:text-foreground transition-colors inline-block hover:translate-x-1 duration-200"
                     >
                       {link.name}
@@ -133,13 +130,25 @@ export default function Footer() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05, duration: 0.3 }}
                       href={social.route}
-                      target={social.route.startsWith('http') ? "_blank" : undefined}
-                      rel={social.route.startsWith('http') ? "noopener noreferrer" : undefined}
-                      onClick={() => track(`${social.name.toLowerCase()}:clicked`, { source: 'footer' })}
+                      target={
+                        social.route.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        social.route.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      onClick={() =>
+                        track(`${social.name.toLowerCase()}:clicked`, {
+                          source: "footer",
+                        })
+                      }
                       className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors group"
                     >
                       <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      <span className="group-hover:underline">{social.name}</span>
+                      <span className="group-hover:underline">
+                        {social.name}
+                      </span>
                     </motion.a>
                   );
                 })}
@@ -156,7 +165,7 @@ export default function Footer() {
             <button
               onClick={() => {
                 scrollToTop();
-                track('back-to-top:clicked', { source: 'footer' });
+                track("back-to-top:clicked", { source: "footer" });
               }}
               className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors group"
               aria-label="Scroll to top"
@@ -173,9 +182,8 @@ export default function Footer() {
             className="mt-8 pt-8 border-t border-foreground/10"
           >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
-              <p>
-                &copy; {year} Tochukwu Nwosa. All rights reserved.
-              </p>
+              <p>&copy; {year} Tochukwu Nwosa. All rights reserved.</p>
+              <ThemeSegmentedToggle />
               <p className="text-xs">
                 Built with Next.js, TypeScript & Tailwind CSS
               </p>
@@ -184,5 +192,5 @@ export default function Footer() {
         </div>
       </div>
     </motion.footer>
-  )
+  );
 }

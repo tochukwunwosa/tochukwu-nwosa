@@ -3,6 +3,14 @@ import type { Configuration } from "webpack";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
   webpack(config: Configuration) {
     config.module?.rules?.push({
       test: /\.svg$/,
@@ -62,14 +70,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-const experimentalConfig = {
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "2mb",
-    },
-  },
-};
-
 // Validate required environment variables
 const requiredEnvVars = [
   "NEXT_PUBLIC_EMAILJS_SERVICE_ID",
@@ -85,4 +85,4 @@ requiredEnvVars.forEach((key) => {
   }
 });
 
-export default { ...nextConfig, ...experimentalConfig };
+export default nextConfig;
