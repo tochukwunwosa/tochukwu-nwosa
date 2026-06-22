@@ -13,9 +13,10 @@ interface MobileNavProps {
   openMenu: boolean
   setOpenMenu: (isOpen: boolean) => void
   activeSection?: string
+  setActiveSection: (section: string) => void
 }
 
-export default function MobileNav({ openMenu, setOpenMenu, activeSection }: MobileNavProps) {
+export default function MobileNav({ openMenu, setOpenMenu, activeSection, setActiveSection }: MobileNavProps) {
   const pathname = usePathname()
   const closeMenu = useCallback(() => {
     setOpenMenu(false)
@@ -66,6 +67,8 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
     if (target) {
       e.preventDefault()
       target.scrollIntoView({ behavior: "smooth" })
+      history.pushState(null, '', `#${id}`)
+      setActiveSection(route)
     }
     closeMenu()
   }
@@ -126,11 +129,14 @@ export default function MobileNav({ openMenu, setOpenMenu, activeSection }: Mobi
                   <Link
                     href={item.route}
                     onClick={(e) => openMobileMenu(e, item.route, item.name, item.isPage)}
-                    className={`block px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
+                    className={`relative block px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
                       ? 'bg-foreground/10 text-foreground'
-                      : 'text-foreground/70 hover:bg-foreground/5 hover:text-foreground hover:translate-x-1'
+                      : 'text-foreground/60 hover:bg-foreground/5 hover:text-foreground hover:translate-x-1'
                       }`}
                   >
+                    {isActive && (
+                      <span className="absolute left-0 inset-y-2 w-0.5 rounded-full bg-foreground" />
+                    )}
                     {item.name}
                   </Link>
                 </motion.li>

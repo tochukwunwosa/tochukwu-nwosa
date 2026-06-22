@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import type { Configuration } from "webpack";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -11,16 +10,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack(config: Configuration) {
-    config.module?.rules?.push({
-      test: /\.svg$/,
-      issuer: /\.[jt]sx?$/,
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
-  },
-
   env: {
     NEXT_PUBLIC_EMAILJS_SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
     NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_TOCHI:

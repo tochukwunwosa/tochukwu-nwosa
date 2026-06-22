@@ -149,9 +149,7 @@ export default function HeroSection() {
             >
               Currently:{" "}
               <span className="text-primary font-semibold">Brainzcode</span>{" "}
-              (full-time) +{" "}
-              <span className="text-primary font-semibold">Kinplus</span>{" "}
-              (contract)
+              (full-time)
             </motion.p>
 
             {/* CTA BUTTONS — unchanged */}

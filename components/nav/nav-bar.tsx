@@ -41,9 +41,8 @@ export default function NavBar() {
         if (!section) return
         const rect = section.getBoundingClientRect()
 
-        // Section is active when it's in the top half of viewport
         if (rect.top <= 100 && rect.bottom >= 100) {
-          current = `#${section.id}`
+          current = `/#${section.id}`
         }
       })
 
@@ -57,6 +56,20 @@ export default function NavBar() {
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [activeSection])
+
+  const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
+    track(`nav:${item.name.toLowerCase()}`, { source: 'navbar' })
+    if (!item.isPage && pathname === '/') {
+      const id = item.route.split('/#')[1]
+      const target = id ? document.getElementById(id) : null
+      if (target) {
+        e.preventDefault()
+        target.scrollIntoView({ behavior: 'smooth' })
+        history.pushState(null, '', `#${id}`)
+        setActiveSection(item.route)
+      }
+    }
+  }
 
   return (
     <>
@@ -97,7 +110,7 @@ export default function NavBar() {
                 >
                   <Link
                     href={item.route}
-                    onClick={() => track(`nav:${item.name.toLowerCase()}`, { source: 'navbar' })}
+                    onClick={(e) => handleNavClick(e, item)}
                     className={`text-sm font-medium transition-colors relative ${isActive
                       ? 'text-foreground'
                       : 'text-foreground/60 hover:text-foreground'
@@ -157,6 +170,7 @@ export default function NavBar() {
             openMenu={openMenu}
             setOpenMenu={setOpenMenu}
             activeSection={activeSection}
+            setActiveSection={setActiveSection}
           />
         )}
       </AnimatePresence>

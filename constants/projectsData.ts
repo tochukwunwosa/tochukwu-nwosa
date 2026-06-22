@@ -33,7 +33,25 @@ export const projectsData: Project[] = [
     featured: true,
   },
   {
-    id: 1,
+    id: 6,
+    title: "KondoHQ",
+    subtitle: "Real estate platform — dashboard & application flow",
+    description:
+      "Contributed as a frontend engineer on a real estate SaaS platform. Built the user dashboard, dashboard landing page, the full flow from viewing to applying for a property, the market insights page, and both user and admin settings pages. All implemented pixel-perfect from Figma designs using Next.js and TypeScript.",
+    image: "/projects/kondohq.png",
+    liveDemoLink: "https://kondohq.com",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS"],
+    metrics: [
+      "User Dashboard & Landing",
+      "Full Property Application Flow",
+      "Market Insights Page",
+      "User & Admin Settings",
+    ],
+    category: "client",
+    featured: false,
+  },
+  {
+    id: 2,
     title: "ClaimMate",
     subtitle: "AI-powered insurance claim report generator",
     description:
@@ -58,7 +76,7 @@ export const projectsData: Project[] = [
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "Tech LinkUp",
     subtitle: "Event discovery platform for Nigeria's tech ecosystem",
     description:
@@ -85,7 +103,7 @@ export const projectsData: Project[] = [
 
   // CLIENT WORK
   // {
-  //   id: 3,
+  //   id: 4,
   //   title: "Kinlearn LMS",
   //   subtitle: "E-learning platform — 500+ daily active users",
   //   description:
@@ -103,7 +121,7 @@ export const projectsData: Project[] = [
   //   featured: true,
   // },
   {
-    id: 4,
+    id: 5,
     title: "Kinplus Technologies",
     subtitle: "Corporate website for engineering & construction firm",
     description:
@@ -116,7 +134,7 @@ export const projectsData: Project[] = [
     featured: false,
   },
   // {
-  //   id: 5,
+  //   id: 6,
   //   title: "Upsmart Solutions",
   //   subtitle: "Digital transformation & IT consulting website",
   //   description:
@@ -128,24 +146,6 @@ export const projectsData: Project[] = [
   //   category: "client",
   //   featured: false,
   // },
-  {
-    id: 6,
-    title: "KondoHQ",
-    subtitle: "Real estate platform — dashboard & application flow",
-    description:
-      "Contributed as a frontend engineer on a real estate SaaS platform. Built the user dashboard, dashboard landing page, the full flow from viewing to applying for a property, the market insights page, and both user and admin settings pages. All implemented pixel-perfect from Figma designs using Next.js and TypeScript.",
-    image: "/projects/kondohq.png",
-    liveDemoLink: "https://kondohq.com",
-    technologies: ["Next.js", "TypeScript", "TailwindCSS"],
-    metrics: [
-      "User Dashboard & Landing",
-      "Full Property Application Flow",
-      "Market Insights Page",
-      "User & Admin Settings",
-    ],
-    category: "client",
-    featured: false,
-  },
 ];
 
 // Helper to get featured projects only
