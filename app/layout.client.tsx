@@ -27,6 +27,30 @@ export default function RootLayoutClient({
           src="https://cloud.umami.is/script.js"
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Person',
+                name: 'Tochukwu Nwosa',
+                url: 'https://tochukwu-nwosa.vercel.app',
+                jobTitle: 'Fullstack Engineer',
+                sameAs: [
+                  'https://github.com/tochukwunwosa',
+                  'https://linkedin.com/in/nwosa-tochukwu',
+                ],
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'Tochukwu Nwosa',
+                url: 'https://tochukwu-nwosa.vercel.app',
+              },
+            ]),
+          }}
+        />
       </head>
       <body className="scroll-smooth snap-y snap-mandatory transition-colors duration-300 ease-in-out">
         <ThemeProvider

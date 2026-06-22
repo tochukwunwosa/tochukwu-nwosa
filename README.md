@@ -4,21 +4,20 @@ Welcome to the source code of my personal portfolio, a showcase of my work as a 
 
 ## Image Preview
 
-![Tochukwu Nwosa Portfolio Preview](https://tochukwu-nwosa.vercel.app/portfolio-image.png)
-
+![Tochukwu Nwosa Portfolio Preview](https://tochukwunwosa.vercel.app/portfolio-image.png)
 
 ## 🌐 Live Site
 
-Explore the live portfolio here: [tochukwu-nwosa.vercel.app](https://tochukwu-nwosa.vercel.app)
+Explore the live portfolio here: [tochukwunwosa.vercel.app](https://tochukwunwosa.vercel.app)
 
 ## 💠 Tech Stack
 
-* **Framework:** Next.js
-* **Styling:** Tailwind CSS
-* **Animations:** Framer Motion
-* **Email Service:** EmailJS
-* **Analytics:** Umami
-* **Deployment:** Vercel
+- **Framework:** Next.js
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Email Service:** EmailJS
+- **Analytics:** Umami
+- **Deployment:** Vercel
 
 ## 📁 Project Structure
 
@@ -74,8 +73,8 @@ Get Umami here https://umami.is
 
 ### Prerequisites
 
-* Node.js >= 14.x
-* npm or yarn
+- Node.js >= 14.x
+- npm or yarn
 
 ### Installation
 
@@ -111,4 +110,3 @@ Get Umami here https://umami.is
 This project is open-source and available under the [MIT License](LICENSE).
 
 If you find this project helpful or inspiring, please consider giving it a ⭐️!
-

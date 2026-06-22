@@ -37,15 +37,33 @@ export async function generateMetadata({
     const { slug } = await params
     const post: Post = await client.fetch(postBySlugQuery, { slug })
     if (!post) return {}
+
+    const ogImage = post.mainImage
+      ? urlFor(post.mainImage).width(1200).height(630).url()
+      : null
+
     return {
-      title: `${post.title}`,
+      title: post.title,
       description: post.excerpt,
+      keywords: post.tags,
+      alternates: {
+        canonical: `/blog/${slug}`,
+      },
       openGraph: {
         title: post.title,
         description: post.excerpt,
-        images: post.mainImage
-          ? [{ url: urlFor(post.mainImage).width(1200).height(630).url() }]
+        url: `/blog/${slug}`,
+        type: 'article',
+        publishedTime: post.publishedAt,
+        images: ogImage
+          ? [{ url: ogImage, width: 1200, height: 630, alt: post.title }]
           : [],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.excerpt,
+        images: ogImage ? [ogImage] : [],
       },
     }
   } catch {
@@ -150,7 +168,35 @@ export default async function BlogPostPage({
     ? urlFor(post.mainImage).width(1200).height(630).url()
     : null
 
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: coverUrl,
+    datePublished: post.publishedAt,
+    url: `https://tochukwu-nwosa.vercel.app/blog/${post.slug.current}`,
+    author: {
+      '@type': 'Person',
+      name: 'Tochukwu Nwosa',
+      url: 'https://tochukwu-nwosa.vercel.app',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Tochukwu Nwosa',
+      url: 'https://tochukwu-nwosa.vercel.app',
+    },
+  })
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLd }}
+    />
     <article className="py-16 md:py-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -229,5 +275,6 @@ export default async function BlogPostPage({
         </div>
       </div>
     </article>
+    </>
   )
 }
