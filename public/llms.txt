@@ -11,3 +11,4 @@
 - [About](https://tochukwu-nwosa.vercel.app/#about): Background, experience, and what I work on.
 - [Projects](https://tochukwu-nwosa.vercel.app/#project): Shipped projects, including MyTreda.
 - [Contact](https://tochukwu-nwosa.vercel.app/#contact): How to reach me.
+- [Blog](https://tochukwu-nwosa.vercel.app/blog): Read about my experiences, bugs and solutions
