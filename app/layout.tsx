@@ -26,16 +26,16 @@ export const metadata: Metadata = {
     "Performance Optimization",
     "Software Engineer Lagos",
   ],
-  metadataBase: new URL("https://tochukwunwosa.vercel.app"),
+  metadataBase: new URL("https://tochukwu-nwosa.vercel.app"),
   openGraph: {
     title: "Tochukwu Nwosa - Fullstack Engineer | React, Next.js, Node.js",
     description:
       "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn, 98+ PageSpeed scores.",
-    url: "https://tochukwunwosa.vercel.app",
+    url: "https://tochukwu-nwosa.vercel.app",
     siteName: "Tochukwu Nwosa - Fullstack Engineer",
     images: [
       {
-        url: "https://tochukwunwosa.vercel.app/og-image.png",
+        url: "https://tochukwu-nwosa.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Tochukwu Nwosa - Fullstack Engineer Portfolio",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn.",
     site: "@obere4u",
     creator: "@obere4u",
-    images: ["https://tochukwunwosa.vercel.app/og-image.png"],
+    images: ["https://tochukwu-nwosa.vercel.app/og-image.png"],
   },
 };
 

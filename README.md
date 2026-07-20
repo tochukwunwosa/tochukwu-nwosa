@@ -4,11 +4,11 @@ Welcome to the source code of my personal portfolio, a showcase of my work as a 
 
 ## Image Preview
 
-![Tochukwu Nwosa Portfolio Preview](https://tochukwunwosa.vercel.app/portfolio-image.png)
+![Tochukwu Nwosa Portfolio Preview](https://tochukwu-nwosa.vercel.app/portfolio-image.png)
 
 ## 🌐 Live Site
 
-Explore the live portfolio here: [tochukwunwosa.vercel.app](https://tochukwunwosa.vercel.app)
+Explore the live portfolio here: [tochukwu-nwosa.vercel.app](https://tochukwu-nwosa.vercel.app)
 
 ## 💠 Tech Stack
 

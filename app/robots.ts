@@ -1,12 +1,12 @@
-import type { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from "next";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/studio/',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/studio/",
     },
-    sitemap: 'https://tochukwu-nwosa.vercel.app/sitemap.xml',
-  }
+    sitemap: "https://tochukwu-nwosa.vercel.app/sitemap.xml",
+  };
 }
