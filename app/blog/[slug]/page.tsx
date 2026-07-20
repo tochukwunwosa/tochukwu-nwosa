@@ -42,16 +42,20 @@ export async function generateMetadata({
       ? urlFor(post.mainImage).width(1200).height(630).url()
       : null
 
+    const metaTitle = post.seo?.metaTitle || post.title
+    const metaDescription = post.seo?.metaDescription || post.excerpt
+
     return {
-      title: post.title,
-      description: post.excerpt,
+      title: metaTitle,
+      description: metaDescription,
       keywords: post.tags,
       alternates: {
         canonical: `/blog/${slug}`,
       },
+      robots: post.seo?.noindex ? { index: false, follow: false } : undefined,
       openGraph: {
-        title: post.title,
-        description: post.excerpt,
+        title: metaTitle,
+        description: metaDescription,
         url: `/blog/${slug}`,
         type: 'article',
         publishedTime: post.publishedAt,
@@ -61,8 +65,8 @@ export async function generateMetadata({
       },
       twitter: {
         card: 'summary_large_image',
-        title: post.title,
-        description: post.excerpt,
+        title: metaTitle,
+        description: metaDescription,
         images: ogImage ? [ogImage] : [],
       },
     }
@@ -92,6 +96,52 @@ const portableTextComponents: PortableTextComponents = {
             </figcaption>
           )}
         </figure>
+      )
+    },
+    code: ({ value }) => {
+      if (!value?.code) return null
+      return (
+        <div className="my-8 rounded-xl overflow-hidden bg-foreground/[0.04] border border-foreground/10">
+          {value.filename && (
+            <div className="px-4 py-2 text-xs font-mono text-foreground/50 border-b border-foreground/10">
+              {value.filename}
+            </div>
+          )}
+          <pre className="overflow-x-auto p-4 text-sm leading-relaxed">
+            <code className="font-mono">{value.code}</code>
+          </pre>
+        </div>
+      )
+    },
+    table: ({ value }) => {
+      const rows: { cells?: string[] }[] = value?.rows ?? []
+      if (rows.length === 0) return null
+      const [headerRow, ...bodyRows] = rows
+      return (
+        <div className="my-8 overflow-x-auto rounded-xl border border-foreground/10">
+          <table className="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr className="bg-foreground/[0.04]">
+                {headerRow.cells?.map((cell, i) => (
+                  <th key={i} className="px-4 py-2 font-semibold border-b border-foreground/10">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, i) => (
+                <tr key={i} className="border-b border-foreground/10 last:border-0">
+                  {row.cells?.map((cell, j) => (
+                    <td key={j} className="px-4 py-2 text-foreground/80">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
     },
   },
@@ -136,16 +186,19 @@ const portableTextComponents: PortableTextComponents = {
         {children}
       </code>
     ),
-    link: ({ value, children }) => (
-      <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary underline underline-offset-4 hover:text-primary/70 transition-colors"
-      >
-        {children}
-      </a>
-    ),
+    link: ({ value, children }) => {
+      const isBlank = value?.blank !== false
+      return (
+        <a
+          href={value?.href}
+          target={isBlank ? '_blank' : undefined}
+          rel={isBlank ? 'noopener noreferrer' : undefined}
+          className="text-primary underline underline-offset-4 hover:text-primary/70 transition-colors"
+        >
+          {children}
+        </a>
+      )
+    },
   },
 }
 

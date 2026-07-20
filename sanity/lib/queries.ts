@@ -8,6 +8,12 @@ export interface SanityImage {
   hotspot?: { x: number; y: number; height: number; width: number }
 }
 
+export interface PostSeo {
+  metaTitle?: string
+  metaDescription?: string
+  noindex?: boolean
+}
+
 export interface Post {
   _id: string
   title: string
@@ -18,6 +24,7 @@ export interface Post {
   body?: PortableTextBlock[]
   tags?: string[]
   estimatedReadTime?: number
+  seo?: PostSeo
 }
 
 export const postsQuery = groq`*[_type == "post"] | order(publishedAt desc) {
@@ -40,7 +47,8 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
   mainImage,
   body,
   tags,
-  estimatedReadTime
+  estimatedReadTime,
+  seo
 }`
 
 export const postSlugsQuery = groq`*[_type == "post"]{ "slug": slug.current }`
