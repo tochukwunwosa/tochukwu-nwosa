@@ -1,0 +1,13 @@
+# Tochukwu Nwosa
+
+> Fullstack engineer building and shipping production web software. React and Next.js on the frontend, Node.js/NestJS/MongoDB on the backend. Writes about real bugs found and fixed in production, including MyTreda.
+
+## Blog
+
+- [The Bug Report Said "Refresh Logs Me Out." It Was Actually Two Bugs](https://tochukwu-nwosa.vercel.app/blog/refresh-logs-me-out-two-mobile-auth-bugs): A mobile-only auth bug that looked like one issue was actually two unrelated ones — a Safari ITP third-party cookie block and a React Hook Form autofill desync. Includes the diagnosis and both fixes.
+
+## About
+
+- [About](https://tochukwu-nwosa.vercel.app/#about): Background, experience, and what I work on.
+- [Projects](https://tochukwu-nwosa.vercel.app/#project): Shipped projects, including MyTreda.
+- [Contact](https://tochukwu-nwosa.vercel.app/#contact): How to reach me.
