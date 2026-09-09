@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:projects": "node --env-file=.env.local scripts/migrate-projects.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

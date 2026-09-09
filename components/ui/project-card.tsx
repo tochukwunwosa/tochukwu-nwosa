@@ -3,8 +3,9 @@
 import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import Image from 'next/image'
-import type { Project } from '@/constants/projectsData';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import type { ProjectCardData } from '@/lib/projects';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,11 +16,16 @@ const fadeUp = {
   }),
 }
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project }: { project: ProjectCardData }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   if (!project) return null;
+
+  const caseStudyHref = `/projects/${project.slug}`;
+  // The image links to the case study when there is one, otherwise straight out.
+  const imageHref = project.hasCaseStudy ? caseStudyHref : project.liveDemoLink;
+  const imageIsExternal = !project.hasCaseStudy;
 
   return (
     <motion.div
@@ -37,18 +43,22 @@ export default function ProjectCard({ project }: { project: Project }) {
           className='w-full lg:w-1/2 relative overflow-hidden rounded-lg border border-foreground/10'
         >
           <Link
-            href={project.liveDemoLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={imageHref}
+            target={imageIsExternal ? "_blank" : undefined}
+            rel={imageIsExternal ? "noopener noreferrer" : undefined}
             className="block aspect-video relative overflow-hidden group/image"
           >
-            <Image
-              src={project.image}
-              width={666}
-              height={375}
-              alt={`Screenshot of ${project.title}`}
-              className='w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105'
-            />
+            {project.imageUrl ? (
+              <Image
+                src={project.imageUrl}
+                width={666}
+                height={375}
+                alt={project.imageAlt}
+                className='w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105'
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-foreground/5 to-transparent" />
+            )}
 
             {/* Overlay on hover */}
             <div className="absolute inset-0 bg-foreground/0 group-hover/image:bg-foreground/5 transition-colors duration-300" />
@@ -75,7 +85,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           {/* Title & Subtitle */}
           <motion.div variants={fadeUp} custom={2}>
             <h3 className="text-2xl md:text-3xl font-bold mb-2">
-              {project.title}
+              {project.hasCaseStudy ? (
+                <Link href={caseStudyHref} className="hover:text-primary transition-colors">
+                  {project.title}
+                </Link>
+              ) : (
+                project.title
+              )}
             </h3>
             <p className="text-base md:text-lg text-foreground/80 font-medium">
               {project.subtitle}
@@ -92,7 +108,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           </motion.p>
 
           {/* Metrics */}
-          {project.metrics && project.metrics.length > 0 && (
+          {project.metrics.length > 0 && (
             <motion.div
               variants={fadeUp}
               custom={4}
@@ -131,6 +147,16 @@ export default function ProjectCard({ project }: { project: Project }) {
             custom={6}
             className="flex flex-wrap gap-4 pt-2"
           >
+            {project.hasCaseStudy && (
+              <Link
+                href={caseStudyHref}
+                data-umami-event={`project:case-study:${project.title}`}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/70 transition-colors group/link"
+              >
+                <span>Read case study</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" />
+              </Link>
+            )}
 
             <Link
               href={project.liveDemoLink}

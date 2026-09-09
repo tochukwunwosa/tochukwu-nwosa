@@ -87,8 +87,8 @@ export default function NavBar() {
           {/* LEFT: BRAND MARK */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              href="#about"
-              aria-label="Back to top"
+              href="/"
+              aria-label="Back to home"
               className="flex items-center justify-center w-10 h-10 rounded-lg border border-foreground/20 hover:border-foreground/40 bg-background hover:bg-foreground/5 transition-colors font-bold text-sm tracking-tight"
             >
               TN
