@@ -65,6 +65,7 @@ const projects = [
     liveDemoLink: 'https://mytreda.com',
     technologies: ['Next.js', 'TypeScript', 'NestJS', 'MongoDB', 'REST API'],
     metrics: [
+      '11+ Paying Customers',
       '80+ Registered Businesses',
       '1,400+ Products Tracked',
       '460+ Sales Records',
