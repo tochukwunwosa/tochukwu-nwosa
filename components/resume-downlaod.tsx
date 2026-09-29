@@ -1,21 +1,21 @@
-"use client"
-import { track } from "@/lib/analytics"
-import { motion } from "framer-motion"
-import { Download } from "lucide-react"
+"use client";
+import { track } from "@/lib/analytics";
+import { motion } from "framer-motion";
+import { Download } from "lucide-react";
 
 export default function ResumeDownload() {
   const handleDownload = () => {
     // link element
-    const link = document.createElement("a")
-    link.href = "/doc/Tochukwu_Nwosa_Frontend_Engineer_CV.pdf"
-    link.download = "Tochukwu-Nwosa-Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    const link = document.createElement("a");
+    link.href = "/doc/Tochukwu_Nwosa_Fullstack_Engineer_CV.pdf";
+    link.download = "Tochukwu-Nwosa-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     track("resume--download", {
       source: "hero-section",
-    })
-  }
+    });
+  };
 
   return (
     <motion.button
@@ -27,5 +27,5 @@ export default function ResumeDownload() {
       <Download size={18} />
       Resume
     </motion.button>
-  )
+  );
 }
