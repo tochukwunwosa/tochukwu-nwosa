@@ -14,7 +14,7 @@ export const experiencesData: Experience[] = [
     title: "Fullstack Developer",
     company: "Brainzcode",
     location: "Remote, Nigeria",
-    duration: "June 2024 - Present",
+    duration: "June 2025 - Present",
     type: "full-time",
     bullets: [
       "Build and ship web applications and client websites using Next.js, React, and TypeScript",
