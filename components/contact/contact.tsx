@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 import ContactForm from './form';
 import { Mail, Linkedin, MapPin, Clock } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
 import Link from 'next/link';
 
 const fadeUp = {
@@ -101,6 +102,15 @@ export default function Contact() {
                 >
                   <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span className="group-hover:underline">linkedin.com/in/nwosa-tochukwu</span>
+                </Link>
+
+                <Link href="https://x.com/tochukwudev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-foreground/70 hover:text-foreground transition-colors group"
+                >
+                  <FaXTwitter className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span className="group-hover:underline">x.com/tochukwudev</span>
                 </Link>
 
                 <div className="flex items-center gap-3 text-sm text-foreground/60">

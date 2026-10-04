@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, Github, Linkedin, MapPin, ArrowUp } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { track } from "@/lib/analytics";
 import { scrollToTop } from "@/lib/utils";
 import ThemeSegmentedToggle from "@/components/theme/theme-segmented-toggle";
@@ -19,6 +20,11 @@ const socials = [
     name: "LinkedIn",
     route: "https://linkedin.com/in/nwosa-tochukwu",
     icon: Linkedin,
+  },
+  {
+    name: "X",
+    route: "https://x.com/tochukwudev",
+    icon: FaXTwitter,
   },
   {
     name: "Email",

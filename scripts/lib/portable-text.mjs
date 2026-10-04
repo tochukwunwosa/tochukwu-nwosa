@@ -53,23 +53,42 @@ function block(text, style = 'normal') {
 }
 
 export const p = (text) => block(text)
+export const h2 = (text) => block(text, 'h2')
 export const h3 = (text) => block(text, 'h3')
 export const quote = (text) => block(text, 'blockquote')
 
-export function bullets(items) {
+function list(items, listItem) {
   return items.map((text) => {
     const { children, markDefs } = inline(text)
     return {
       _type: 'block',
       _key: key(),
       style: 'normal',
-      listItem: 'bullet',
+      listItem,
       level: 1,
       markDefs,
       children,
     }
   })
 }
+
+export const bullets = (items) => list(items, 'bullet')
+export const numbered = (items) => list(items, 'number')
+
+/** First row is the header row, matching the `table` renderer. */
+export const table = (rows) => ({
+  _type: 'table',
+  _key: key(),
+  rows: rows.map((cells) => ({ _type: 'tableRow', _key: key(), cells })),
+})
+
+export const code = (language, source, filename) => ({
+  _type: 'code',
+  _key: key(),
+  language,
+  code: source.trim(),
+  ...(filename ? { filename } : {}),
+})
 
 export const stackItem = (category, name, why) => ({
   _type: 'stackItem',
@@ -111,7 +130,15 @@ export function toMarkdown(blocks = []) {
           return out
         })
         .join('')
+      if (b._type === 'table') {
+        const [head, ...rest] = b.rows.map((r) => `| ${r.cells.join(' | ')} |`)
+        const rule = `| ${b.rows[0].cells.map(() => '---').join(' | ')} |`
+        return [head, rule, ...rest].join('\n')
+      }
+      if (b._type === 'code') return '```' + b.language + '\n' + b.code + '\n```'
       if (b.listItem === 'bullet') return `- ${text}`
+      if (b.listItem === 'number') return `1. ${text}`
+      if (b.style === 'h2') return `\n## ${text}`
       if (b.style === 'h3') return `\n### ${text}`
       if (b.style === 'blockquote') return `> ${text}`
       return text

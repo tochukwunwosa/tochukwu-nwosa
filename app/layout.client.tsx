@@ -40,6 +40,7 @@ export default function RootLayoutClient({
                 sameAs: [
                   'https://github.com/tochukwunwosa',
                   'https://linkedin.com/in/nwosa-tochukwu',
+                  'https://x.com/tochukwudev',
                 ],
               },
               {

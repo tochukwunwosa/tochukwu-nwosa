@@ -131,6 +131,7 @@ export const post = defineType({
               { title: 'CSS', value: 'css' },
               { title: 'JSON', value: 'json' },
               { title: 'Bash', value: 'bash' },
+              { title: 'SQL', value: 'sql' },
               { title: 'Python', value: 'python' },
               { title: 'PowerShell', value: 'powershell' },
             ],

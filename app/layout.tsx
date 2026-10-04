@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     title: "Tochukwu Nwosa - Fullstack Engineer | React, Next.js, Node.js",
     description:
       "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn.",
-    site: "@obere4u",
-    creator: "@obere4u",
+    site: "@tochukwudev",
+    creator: "@tochukwudev",
     images: ["https://tochukwu-nwosa.vercel.app/og-image.png"],
   },
 };
