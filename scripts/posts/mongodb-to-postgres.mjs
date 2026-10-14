@@ -119,6 +119,9 @@ ALTER TABLE sales
 `,
       'money.sql (simplified)',
     ),
+    p(
+      'Amounts are stored in kobo, so ₦4.50 is saved as `450` and passes. Only a fraction of a kobo, like `450.5`, is rejected, which is exactly the kind of value a missed rounding step produces.',
+    ),
 
     h2('Build the safety net first'),
     p('The work ran in phases, each in its own commits:'),
