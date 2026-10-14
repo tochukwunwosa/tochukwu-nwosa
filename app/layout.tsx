@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Tochukwu Nwosa - Fullstack Engineer",
     images: [
       {
-        url: "https://tochukwu-nwosa.vercel.app/og-image.png",
+        url: "https://tochukwu-nwosa.vercel.app/og-image.png?v=2",
         width: 1200,
         height: 630,
         alt: "Tochukwu Nwosa - Fullstack Engineer Portfolio",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn.",
     site: "@tochukwudev",
     creator: "@tochukwudev",
-    images: ["https://tochukwu-nwosa.vercel.app/og-image.png"],
+    images: ["https://tochukwu-nwosa.vercel.app/og-image.png?v=2"],
   },
 };
 
