@@ -73,7 +73,7 @@ export default function Footer() {
               <p className="text-sm text-foreground/70 max-w-md leading-relaxed">
                 Fullstack Engineer building and shipping production web
                 software. React and Next.js on the frontend. Node.js, NestJS,
-                and MongoDB on the backend. 40% faster load times, 98+ PageSpeed
+                and PostgreSQL on the backend. 40% faster load times, 98+ PageSpeed
                 scores.
               </p>
               <div className="flex items-center gap-2 text-sm text-foreground/60 pt-2">

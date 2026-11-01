@@ -42,7 +42,7 @@ export async function GET() {
 
   const body = `# Tochukwu Nwosa
 
-> Fullstack engineer building and shipping production web software. React and Next.js on the frontend, Node.js/NestJS/MongoDB on the backend. Writes about real bugs found and fixed in production, including MyTreda.
+> Fullstack engineer building and shipping production web software. React and Next.js on the frontend, Node.js/NestJS/PostgreSQL on the backend. Writes about real bugs found and fixed in production, including MyTreda.
 
 ## Projects
 

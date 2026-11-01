@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "Tochukwu Nwosa - Fullstack Engineer | React, Next.js, Node.js, TypeScript",
   description:
-    "Fullstack Engineer with 3+ years shipping production software. React, Next.js, Node.js, NestJS, MongoDB. Built and running MyTreda — 80+ businesses, 1,400+ products tracked. Open to remote roles.",
+    "Fullstack Engineer with 3+ years shipping production software. React, Next.js, Node.js, NestJS, PostgreSQL. Built and running MyTreda — 210+ businesses, ₦255M in sales recorded. Open to remote roles.",
   keywords: [
     "Tochukwu Nwosa",
     "Fullstack Engineer",
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Node.js Developer",
     "NestJS Developer",
     "TypeScript Developer",
+    "PostgreSQL Developer",
     "MongoDB Developer",
     "JavaScript Developer",
     "Web Application Developer",

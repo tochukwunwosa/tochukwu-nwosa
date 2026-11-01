@@ -115,7 +115,7 @@ export default function HeroSection() {
               variants={itemVariants}
             >
               I build the whole thing — from database to UI. React and Next.js
-              on the frontend. Node.js, NestJS, and MongoDB on the backend.
+              on the frontend. Node.js, NestJS, and PostgreSQL on the backend.
             </motion.p>
 
             <motion.div
@@ -265,7 +265,7 @@ export default function HeroSection() {
                   <motion.p variants={itemVariants}>
                     On the frontend: React, Next.js, TypeScript — pixel-perfect
                     UIs and performance that moves the needle. On the backend:
-                    Node.js, NestJS, MongoDB, Supabase — API design, auth
+                    Node.js, NestJS, PostgreSQL, Supabase — API design, auth
                     systems, and business logic built for real traffic.
                   </motion.p>
 
@@ -274,8 +274,8 @@ export default function HeroSection() {
                     <span className="font-semibold">Brainzcode</span>. I also
                     built and run{" "}
                     <span className="font-semibold text-primary">MyTreda</span>{" "}
-                    — an inventory and business management platform with 80+
-                    registered businesses and 1,400+ products tracked.
+                    — an inventory and business management platform with 210+
+                    businesses, 4,200+ products and ₦255M in sales recorded.
                   </motion.p>
 
                   {/* CHANGED: achievements rewritten to include backend wins */}
@@ -285,7 +285,7 @@ export default function HeroSection() {
                       {[
                         {
                           icon: "✓",
-                          text: "Built and shipped MyTreda — full-stack product with 80+ businesses, 460+ sales records, 3,000+ activity logs",
+                          text: "Built and shipped MyTreda — full-stack product with 210+ businesses and 3,900+ sales worth ₦255M; moved it from MongoDB to Postgres with every kobo matched",
                         },
                         {
                           icon: "↑",
@@ -323,8 +323,8 @@ export default function HeroSection() {
                     <span className="font-semibold text-foreground/90">
                       Tech stack:
                     </span>{" "}
-                    React, Next.js, TypeScript, Node.js, NestJS, MongoDB,
-                    Supabase, Tailwind CSS
+                    React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL,
+                    Prisma, MongoDB, Supabase, Tailwind CSS
                   </motion.p>
 
                   <motion.p

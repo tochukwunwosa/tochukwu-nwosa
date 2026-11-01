@@ -19,7 +19,7 @@ export default {
       'MyTreda is inventory and sales software for Nigerian traders — small business owners who track stock, record sales, and chase debts, mostly from a phone, often on a connection that comes and goes.',
     ),
     p(
-      'I build and run all of it: the Next.js frontend, the NestJS REST API, the MongoDB schema, the authentication system, the WhatsApp notification pipeline, and the infrastructure underneath. Design, product decisions, deploys, and the support inbox are all mine too.',
+      'I build and run all of it: the Next.js frontend, the NestJS REST API, the PostgreSQL schema, the authentication system, the WhatsApp notification pipeline, and the infrastructure underneath. Design, product decisions, deploys, and the support inbox are all mine too.',
     ),
     p(
       'It is not a portfolio piece I shipped once and walked away from. It has paying customers and an on-call rotation of one, and most of what I have learned from it arrived after launch — from bugs that only existed in production.',
@@ -80,8 +80,8 @@ export default {
     ),
     stackItem(
       'data',
-      'MongoDB',
-      'The product schema moved constantly in the first months — traders sell things that refuse to sit in a fixed column set — and schemaless was the right call for that phase. A sale with its line items is still a genuine document aggregate, and stock mutations run inside a transaction with the inventory ledger. What I would want from Postgres today is tenant scoping enforced once at the row level rather than in every query.',
+      'PostgreSQL + Prisma',
+      `MongoDB carried the early product, while the product schema moved constantly. Once it settled, I moved to Postgres on 3 October 2026: 42k records and ₦255M in sales, every kobo matched, about 35 minutes of downtime and no lost sales. Each business is now kept apart by row-level security, a rule the database checks rather than a filter every query must remember. Full write-up: [Moving MyTreda from MongoDB to Postgres](${SITE}/blog/moving-mytreda-from-mongodb-to-postgres).`,
     ),
     stackItem(
       'infra',
@@ -200,10 +200,10 @@ export default {
   ],
 
   outcomes: [
-    outcome('80+', 'Registered businesses'),
-    outcome('1,400+', 'Products tracked'),
-    outcome('460+', 'Sales recorded'),
-    outcome('3,000+', 'Activity log entries'),
+    outcome('210+', 'Businesses'),
+    outcome('4,200+', 'Products tracked'),
+    outcome('3,900+', 'Sales recorded'),
+    outcome('₦255M', 'In sales recorded'),
   ],
 
   results: [
@@ -223,7 +223,7 @@ export default {
 
   retrospective: [
     ...bullets([
-      '**Postgres — for tenancy, not for transactions.** Schemaless earned its place while the product shape was moving daily. It has stopped moving, and the thing that matters most now is keeping 80 businesses apart: a scoping filter I apply through a helper in some services and hand-write in the rest, where a relational database enforces it once at the row level. Stock safety I already have — sales and the inventory ledger commit in one transaction, and the quantity floor is a schema validator every write path goes through. The activity log stays a document store either way.',
+      '**Postgres — for tenancy, not for transactions.** Schemaless earned its place while the product shape was moving daily. Once it stopped moving, the thing that mattered most was keeping every business apart, and a scoping filter applied by hand in some services is not a guarantee. I made the move on 3 October 2026, and row-level security now enforces that isolation once, in the database.',
       '**Same-site from day one.** Putting the API on `api.mytreda.com` at the start would have prevented the entire class of cookie bug, and cost one DNS record. I reached for it as a fix when it should have been the default.',
       '**Write the checklist before the fix.** Mine caught six bugs on its first run. Had it existed before the routing work, it would have caught the broken import template on the day it shipped instead of six days later.',
       '**Treat "works locally" as a claim about the environment, not the code.** If local cannot reproduce the condition — no subdomain, no TLS, no cold start — it cannot clear it either. A real preview host per branch belongs in the setup, not in the postmortem.',

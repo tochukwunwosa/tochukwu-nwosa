@@ -106,7 +106,7 @@ const COMPETENCIES: Competency[] = [
     title: 'Fullstack Product Development',
     description: 'Building and shipping complete products — frontend UI, REST APIs, database schema, auth systems, and deployment pipelines',
     icon: '🛠️',
-    proof: 'MyTreda: 80+ businesses, 1,400+ products, built solo end-to-end'
+    proof: 'MyTreda: 210+ businesses, ₦255M in sales, built solo end-to-end'
   },
   {
     title: 'Performance Optimization',
@@ -116,7 +116,7 @@ const COMPETENCIES: Competency[] = [
   },
   {
     title: 'State Management & Data',
-    description: 'Redux, Zustand, React Query on the frontend — MongoDB and Supabase on the backend',
+    description: 'Redux, Zustand, React Query on the frontend — PostgreSQL, MongoDB and Supabase on the backend',
     icon: '🔄',
     proof: 'Scalable architecture serving 500+ daily users'
   },
