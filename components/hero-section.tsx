@@ -126,7 +126,7 @@ export default function HeroSection() {
                 { value: "40%", label: "Faster Load Times" },
                 { value: "210+", label: "Businesses on MyTreda" },
                 { value: "11+", label: "Paying Customers" },
-                { value: "500+", label: "Daily Users Served" },
+                { value: "500+", label: "Daily LMS Users" },
               ].map((metric, index) => (
                 <motion.div
                   key={index}

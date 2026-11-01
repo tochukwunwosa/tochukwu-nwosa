@@ -11,6 +11,7 @@ import {
   SiNextdotjs,
   SiTailwindcss,
   SiMongodb,
+  SiPostgresql,
   SiSupabase,
   SiNestjs,
   SiCypress,
@@ -70,6 +71,11 @@ const SUPPORTING_SKILLS: SupportingSkill[] = [
     name: 'NestJS',
     icon: SiNestjs,
     context: 'API architecture & business workflows'
+  },
+  {
+    name: 'PostgreSQL',
+    icon: SiPostgresql,
+    context: 'Prisma ORM, row-level security, migrations'
   },
   {
     name: 'MongoDB',
@@ -234,7 +240,7 @@ export default function TechnicalSkills() {
           </div>
         </motion.div>
 
-        {/* SUPPORTING SKILLS — CHANGED: now 5 items in a 2+3 grid */}
+        {/* SUPPORTING SKILLS — CHANGED: now 6 items in a 3+3 grid */}
         <motion.div variants={fadeUp} custom={13}>
           <h3 className="text-2xl font-semibold mb-8 text-center">Also Working With</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

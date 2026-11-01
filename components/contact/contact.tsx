@@ -129,8 +129,7 @@ export default function Contact() {
             <div className="bg-foreground/5 border border-foreground/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2 text-sm">Current Availability</h3>
               <p className="text-sm text-foreground/70">
-                Available for new opportunities with 2-week notice.
-                Immediate start for the right role.
+                Available for new opportunities with 2 weeks’ notice.
               </p>
             </div>
           </motion.div>
