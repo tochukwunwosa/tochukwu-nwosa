@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tochukwu Nwosa - Fullstack Engineer | React, Next.js, Node.js",
     description:
-      "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn, 98+ PageSpeed scores.",
+      "Building and shipping full-stack products. 210+ businesses on MyTreda, 500+ daily users on Kinlearn, 98+ PageSpeed scores.",
     url: "https://tochukwu-nwosa.vercel.app",
     siteName: "Tochukwu Nwosa - Fullstack Engineer",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tochukwu Nwosa - Fullstack Engineer | React, Next.js, Node.js",
     description:
-      "Building and shipping full-stack products. 80+ businesses on MyTreda, 500+ daily users on Kinlearn.",
+      "Building and shipping full-stack products. 210+ businesses on MyTreda, 500+ daily users on Kinlearn.",
     site: "@tochukwudev",
     creator: "@tochukwudev",
     images: ["https://tochukwu-nwosa.vercel.app/og-image.png?v=2"],
